@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build Deciaml At
     runs-on: ubuntu-latest
 
     steps:
@@ -16,6 +16,9 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
+
+      - name: install
+        run: npm ci --legacy-peer-deps
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
