@@ -3,14 +3,15 @@ import brandColors from '../colors/brandColors'
 
 const lightTheme: Theme = {
   colors: {
-    background: brandColors.backgroundFillGray,
-    body: brandColors.backgroundFillWhite,
-    headings: brandColors.backgroundFillWhite,
+    background: brandColors.borderColor,
+    body: brandColors.borderColor,
+    headings: brandColors.borderColor,
     black: brandColors.black,
-    white: brandColors.white,
+    white: brandColors.black,
     borders: brandColors.borderColor,
     tableOdd: brandColors.borderColor,
     brand: brandColors.selectionColor,
+    textColor: brandColors.white,
     attrs: {
       str: '#f44336',
       agi: '#39d402',

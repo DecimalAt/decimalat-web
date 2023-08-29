@@ -11,6 +11,7 @@ const darkTheme: Theme = {
     borders: brandColors.borderColor,
     tableOdd: brandColors.borderColor,
     brand: brandColors.red,
+    textColor: brandColors.white,
     attrs: {
       str: '#f44336',
       agi: '#39d402',

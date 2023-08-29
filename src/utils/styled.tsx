@@ -1,7 +1,8 @@
-//import 'styled-components'
+import 'styled-components'
+//import styled, { createGlobalStyle } from 'styled-components'
 
-//declare module 'styled-components' {
-    export  interface Theme {
+declare module 'styled-components' {
+    export default interface Theme {
         colors: {
             background: string
             body: string
@@ -10,7 +11,8 @@
             tableOdd: string
             brand: string
             black: string
-            white: string
+            white: string,
+            textColor: string,
             attrs: {
                 str: string
                 agi: string
@@ -46,4 +48,6 @@
             header: string
         }
     }
-//}
+}
+
+//export default styled as createGlobalStyle<Theme>
