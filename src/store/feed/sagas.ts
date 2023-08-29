@@ -1,7 +1,7 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 import { Feed, FeedActionTypes } from './types'
 import { fetchError, fetchSuccess } from './actions'
-import { callApi, ResponseGenerator } from '../../utils/api'
+import { callApi } from '../../utils/api'
 
 const API_ENDPOINT = /*process.env.REACT_APP_API_ENDPOINT ||*/ 'https://api.opendota.com' // TODO: Need to change the API end point as per the contract
 

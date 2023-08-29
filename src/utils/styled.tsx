@@ -1,8 +1,8 @@
 import 'styled-components'
 //import styled, { createGlobalStyle } from 'styled-components'
 
-declare module 'styled-components' {
-    export default interface Theme {
+//declare module 'styled-components' {
+    export interface Theme {
         colors: {
             background: string
             body: string
@@ -48,6 +48,6 @@ declare module 'styled-components' {
             header: string
         }
     }
-}
+//}
 
 //export default styled as createGlobalStyle<Theme>
