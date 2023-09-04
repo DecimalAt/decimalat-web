@@ -116,7 +116,7 @@ const HeaderOptions = styled('div')`
   }
 `
 
-const Header: React.FC<HeaderProps> = ({ title }) => (
+const Header: React.FC<HeaderProps> = ({  }) => (
   <Wrapper>
     <HeaderInner>
       <HeaderLeft>
