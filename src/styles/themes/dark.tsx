@@ -6,12 +6,19 @@ const darkTheme: Theme = {
     background: brandColors.gray75,
     body: brandColors.gray10,
     headings: brandColors.gray5,
-    black: brandColors.black,
     white: brandColors.white,
     borders: brandColors.borderColor,
     tableOdd: brandColors.borderColor,
     brand: brandColors.red,
-    textColor: brandColors.white,
+    
+    textColor: brandColors.textGray,
+    contentBackground: brandColors.backgroundFillWhite,
+    bodyBackground: brandColors.grayScale4,
+    borderColor1: brandColors.grayScale5,
+    black: brandColors.grayScale1,
+    selectionColor: brandColors.selectionColor,
+    primaryOrange: brandColors.primaryOrange,
+
     attrs: {
       str: '#f44336',
       agi: '#39d402',
