@@ -15,7 +15,7 @@ const Wrapper = styled('div')`
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  background-color: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.body};
+  background-color: ${props => props.theme.colors.bodyBackground};
+  color: ${props => props.theme.colors.textColor};
   font-family: ${props => props.theme.fonts.body};
 `

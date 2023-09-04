@@ -6,12 +6,19 @@ const lightTheme: Theme = {
     background: brandColors.borderColor,
     body: brandColors.borderColor,
     headings: brandColors.borderColor,
-    black: brandColors.black,
     white: brandColors.black,
     borders: brandColors.borderColor,
     tableOdd: brandColors.borderColor,
     brand: brandColors.selectionColor,
-    textColor: brandColors.white,
+
+    textColor: brandColors.textGray,
+    contentBackground: brandColors.backgroundFillWhite,
+    bodyBackground: brandColors.grayScale4,
+    borderColor1: brandColors.grayScale5,
+    black: brandColors.grayScale1,
+    selectionColor: brandColors.selectionColor,
+    primaryOrange: brandColors.primaryOrange,
+
     attrs: {
       str: '#f44336',
       agi: '#39d402',
@@ -21,11 +28,11 @@ const lightTheme: Theme = {
   fonts: {
     headings:
       // eslint-disable-next-line max-len
-      "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,  Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif",
+      "'Poppins_400'",
     body:
       // eslint-disable-next-line max-len
-      '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif',
-    monospace: "'IBM Plex Mono', Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace, monospace"
+      "'Poppins_300'",
+    monospace: "'Poppins_300'"
   },
   fontSizes: {
     h1: '2.441rem',
@@ -48,7 +55,7 @@ const lightTheme: Theme = {
     xl: '1140px'
   },
   heights: {
-    header: '60px'
+    header: '56px'
   }
 }
 

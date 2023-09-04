@@ -12,7 +12,13 @@ import 'styled-components'
             brand: string
             black: string
             white: string,
+
             textColor: string,
+            contentBackground: string,
+            bodyBackground: string,
+            borderColor1: string,
+            selectionColor: string,
+            primaryOrange: string,
             attrs: {
                 str: string
                 agi: string

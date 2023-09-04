@@ -6,6 +6,7 @@ const Page = styled('div')`
   flex: 1 1 auto;
   padding: ${props => props.theme.containerPadding};
   padding-bottom: 3rem;
+  background-color: ${props => props.theme.colors.bodyBackground};
 `
 
 export default Page

@@ -1,8 +1,13 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import brandLogo from '../../../public/decimal_Logo.svg'
 import LayoutContainer from '../../containers/LayoutContainer'
 import Container from './Container'
+import { FilterTextbox } from '../SearchBar'
+import Switch from '../Switch'
+import Icon from '../MyIcon'
+import { Button } from '../Button'
 
 interface HeaderProps {
   title: string
@@ -10,9 +15,11 @@ interface HeaderProps {
 
 const Wrapper = styled('header')`
   padding: 0.5rem 1.5rem;
-  background-color: ${props => props.theme.colors.brand};
-  color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.contentBackground};
+  color: ${props => props.theme.colors.textColor};
   font-family: ${props => props.theme.fonts.headings};
+  height: ${props => props.theme.heights.header};
+  display: flex;
 `
 
 const HeaderInner = styled(Container)`
@@ -27,7 +34,28 @@ const HeaderInner = styled(Container)`
 `
 
 const HeaderLeft = styled('div')`
-  padding-right: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 100%;
+
+  @media (min-width: ${props => props.theme.breakpoints.md}) {
+    width: 32%;
+  }
+`
+
+const WrapperInner = styled('div')`
+  display: flex;
+  font-size: 14px;
+  font-family: 'POPPINS_600';
+  color: ${props => props.theme.colors.black};
+
+  &.subHeaderMenu {
+    display: contents;
+    font-family: 'Poppins_400';
+    font-size: 12px;
+    color: inherit;
+  }
 `
 
 const HeaderNav = styled('nav')`
@@ -43,12 +71,21 @@ const HeaderNavLink = styled(NavLink)`
   margin: 0 1rem;
 
   &.is-active {
-    text-decoration: underline;
+    text-decoration: auto;
+    font-family: 'POPPINS_600';
+    color: ${props => props.theme.colors.selectionColor};
+  }
+  &:hover {
+    text-decoration: none;
   }
 `
 
 const HeaderRight = styled('div')`
   padding-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
 `
 
 const Title = styled('h2')`
@@ -56,27 +93,26 @@ const Title = styled('h2')`
   font-weight: 500;
 `
 
-const CurrentTheme = styled('span')`
-  margin-right: 1rem;
+const VerticalLine = styled('div')`
+  border-left: 1px solid ${props => props.theme.colors.borderColor1};
+  align-self: stretch;
+  width: 1px;
+  display: block;
+  margin-left: 20px;
+  margin-right: 20px; 
 `
 
-const ThemeSwitcherButton = styled('button')`
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid ${props => props.theme.colors.white};
-  border-radius: 3px;
-  background-color: ${props => props.theme.colors.white};
-  color: ${props => props.theme.colors.brand};
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover,
-  &:focus {
-    background-color: transparent;
-    color: ${props => props.theme.colors.white};
+const HeaderOptions = styled('div')`
+  button {
+    font-family: 'Poppins_300'
+  }
+  >svg, button {
+    margin-right: 15px;
+    cursor: pointer;
+    fill: ${props => props.theme.colors.textColor};
+  }
+  >svg:hover {
+    fill: ${props => props.theme.colors.selectionColor};
   }
 `
 
@@ -84,25 +120,52 @@ const Header: React.FC<HeaderProps> = ({ title }) => (
   <Wrapper>
     <HeaderInner>
       <HeaderLeft>
-        <Title>{title}</Title>
+        <Title>
+          <img src={brandLogo} alt="DecimalAt" height={'30px'} />
+        </Title>
+        <FilterTextbox />
       </HeaderLeft>
-      <HeaderNav>
-        <HeaderNavLink exact to="/" activeClassName="is-active">
-          Feed
-        </HeaderNavLink>
-        <HeaderNavLink to="/jobs" activeClassName="is-active">
-          Jobs
-        </HeaderNavLink>
-        <HeaderNavLink to="/dashboard" activeClassName="is-active">
-          Dashboard
-        </HeaderNavLink>
-      </HeaderNav>
+      <WrapperInner>
+        <HeaderNav>
+          <HeaderNavLink exact to="/feeds" activeClassName="is-active">
+            ALL JOBS
+          </HeaderNavLink>
+          <HeaderNavLink exact to="/" activeClassName="is-active">
+            ALL FEEDS
+          </HeaderNavLink>
+        </HeaderNav>
+      </WrapperInner>
+      <VerticalLine />
+      <WrapperInner className='subHeaderMenu'>
+        <HeaderNav>
+          <HeaderNavLink exact to="/jobs/my" activeClassName="is-active">
+            MY JOBS
+          </HeaderNavLink>
+          <HeaderNavLink to="/feeds/my" activeClassName="is-active">
+            MY FEEDS
+          </HeaderNavLink>
+          <HeaderNavLink to="/dashboard" activeClassName="is-active">
+            MY REWARDS
+          </HeaderNavLink>
+        </HeaderNav>
+      </WrapperInner>
       <HeaderRight>
+        <HeaderOptions>
+          <Button>
+            + New Job
+          </Button>
+          <Icon icon='Settings' size='22px' />
+          <Icon icon='Notification' size='22px' />
+          <Icon icon='User' size='22px' />
+        </HeaderOptions>
         <LayoutContainer>
           {({ theme, setTheme }) => (
             <>
-              <CurrentTheme>Current theme: {theme}</CurrentTheme>
-              <ThemeSwitcherButton onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Switch theme</ThemeSwitcherButton>
+              <Switch
+                id="my-switch"
+                toggled={theme !== 'light'}
+                onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              />
             </>
           )}
         </LayoutContainer>

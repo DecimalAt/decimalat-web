@@ -9,6 +9,7 @@ import FeedPage from './pages/feed'
 //import DashboardPage from './pages/dashboard'
 import normalize from './styles/normalize'
 import globals from './styles/globals'
+import FontStyles from './styles/fonts'
 
 
 // Global styles
@@ -20,6 +21,7 @@ ${globals}
 // If app becomes big the switch to `react-loadable`.
 const Routes: React.FC = () => (
   <Root>
+    <FontStyles/>
     <Globals/> 
     <Header title="DecimalAt Web App" />
     <Switch>

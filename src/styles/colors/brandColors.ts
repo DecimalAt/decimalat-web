@@ -25,9 +25,33 @@ const brandColors = {
     fillColor: '#ECF2FF',
     textBlue: '#037DFF',
     iconFade: '#FFF',
-    backgroundFillWhite: '#FFF',
     backgroundFillGray: '#F4F5F9',
-    optionSelect: '#F7F9FC'
+    optionSelect: '#F7F9FC',
+
+    primaryBlue: '#037DFF',
+    primaryOrange: '#F15A24',
+    secondaryBlue1: '#2F67FF',
+    secondaryBlue2: '#5D72FF',
+    secondaryBlue3: '#7196FF',
+    secondaryBlue4: '#7F79FF',
+    secondaryBlue5: '#8C7DFF',
+    secondaryPurpule1: '#B286FF',
+    secondaryPurpule2: '#BD87FB',
+    secondaryOrange1: '#ED6C5A',
+    secondaryPink: '#FBA38D',
+    secondaryGreen: '#4BAE4F',
+    secondaryOrange: '#F4A00B',
+    secondaryYellow: '#E8C11C',
+    secondaryLightBlue: '#ECF2FF',
+    grayScale1: '#000000',
+    grayScale2: '#25304C',
+    grayScale3: '#AEB0BB',
+    grayScale4: '#F4F5F9',
+    grayScale5: '#EEF0F4',
+    grayScale6: '#F7F9FC',
+    grayScale7: '#FFFFFF',
+    backgroundFillWhite: '#FFF',
+    textGray: '#6F7B89'
   }
   
   export default brandColors

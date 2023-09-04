@@ -9,6 +9,7 @@ import Routes from './routes'
 import { ApplicationState } from './store'
 import LayoutContainer from './containers/LayoutContainer'
 import * as themes from './styles/themes'
+//import FontStyles from './styles/fonts'
 
 // Any additional component props go here.
 interface MainProps {

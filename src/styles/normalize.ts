@@ -53,8 +53,7 @@ const normalize = css`
   */
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-      'Segoe UI Symbol';
+    font-family: "Poppins_300";
   }
 
   /**
@@ -107,7 +106,7 @@ const normalize = css`
   kbd,
   samp,
   pre {
-    font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 1 */
+    font-family: "Poppins_300"; /* 1 */
     font-size: 1em; /* 2 */
   }
 
