@@ -22,10 +22,10 @@ const SwitchLabel = styled.label`
 const SwitchButton = styled.span`
   content: "";
   position: absolute;
-  top: 1px;
+  top: 1.5px;
   left: 0px;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 45px;
   transition: 0.2s;
   background: ${props => props.theme.colors.selectionColor};

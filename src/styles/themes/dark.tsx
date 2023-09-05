@@ -55,7 +55,7 @@ const darkTheme: Theme = {
     xl: '1140px'
   },
   heights: {
-    header: '60px'
+    header: '56px'
   }
 }
 
