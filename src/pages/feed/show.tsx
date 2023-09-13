@@ -17,7 +17,7 @@ import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
 
 import { ApplicationState } from '../../store'
-import { Feed } from '../../store/feed/types'
+import { Feed, FeedState } from '../../store/feed/types'
 import { fetchRequest } from '../../store/feed/actions'
 import styled from 'styled-components'
 import LoadingOverlay from '../../components/data/LoadingOverlay'
@@ -27,7 +27,7 @@ import LoadingSpinner from '../../components/data/LoadingSpinner'
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
     loading: boolean
-    data: Feed[]
+    data: Feed
     errors?: string
 }
 
@@ -63,14 +63,14 @@ class ShowFeedesPage extends React.Component<AllProps, State> {
     public componentDidMount() {
         const { data, fetchFeed } = this.props
 
-        if (!data || data.length === 0) {
+        if (!data) {
             fetchFeed()
         }
     }
 
     public render() {
         const { data, loading, match } = this.props
-        const selected = data.find(feed => feed.name === match.params.name)
+        const selected =  data.jobs.find(j => j.id === match.params.name)
 
         return (
             <Page>
@@ -86,25 +86,25 @@ class ShowFeedesPage extends React.Component<AllProps, State> {
                         {selected && (
                             <>
                                 <FeedInfobox>
-                                    <FeedInfoboxBlurBackground src={API_ENDPOINT + selected.img} />
+                                    <FeedInfoboxBlurBackground src={API_ENDPOINT + selected.creator} />
                                     <FeedInfoboxInner>
-                                        <FeedInfoboxImage src={API_ENDPOINT + selected.img} />
+                                        <FeedInfoboxImage src={API_ENDPOINT + selected.creator} />
                                         <FeedInfoboxHeading>
-                                            <FeedName>{selected.localized_name}</FeedName>
+                                            <FeedName>{selected.creator}</FeedName>
                                             <FeedRoles>
-                                                {selected.attack_type} - <span>{selected.roles.join(', ')}</span>
+                                                {/* {selected.creator} - <span>{selected.roles.join(', ')}</span> */}
                                             </FeedRoles>
                                         </FeedInfoboxHeading>
                                         <FeedStats>
                                             <FeedStatsInner>
-                                                <StatAttribute attr="str" isPrimaryAttr={selected.primary_attr === 'str'}>
-                                                    <Bullet attr="str" /> {selected.base_str || 0} + {selected.str_gain || 0}
+                                                <StatAttribute attr="str" isPrimaryAttr={selected.creator === 'str'}>
+                                                    <Bullet attr="str" /> {selected.creator || 0} + {selected.creator || 0}
                                                 </StatAttribute>
-                                                <StatAttribute attr="agi" isPrimaryAttr={selected.primary_attr === 'agi'}>
-                                                    <Bullet attr="agi" /> {selected.base_agi || 0} + {selected.agi_gain || 0}
+                                                <StatAttribute attr="agi" isPrimaryAttr={selected.creator === 'agi'}>
+                                                    <Bullet attr="agi" /> {selected.creator || 0} + {selected.creator || 0}
                                                 </StatAttribute>
-                                                <StatAttribute attr="int" isPrimaryAttr={selected.primary_attr === 'int'}>
-                                                    <Bullet attr="int" /> {selected.base_int || 0} + {selected.int_gain || 0}
+                                                <StatAttribute attr="int" isPrimaryAttr={selected.creator === 'int'}>
+                                                    <Bullet attr="int" /> {selected.creator || 0} + {selected.creator || 0}
                                                 </StatAttribute>
                                             </FeedStatsInner>
                                         </FeedStats>
@@ -113,30 +113,30 @@ class ShowFeedesPage extends React.Component<AllProps, State> {
                                 <FeedDetails>
                                     <FeedDetailsColumn>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Base Attack:</FeedDetailsAttrName> {selected.base_attack_min} - {selected.base_attack_max}
+                                            <FeedDetailsAttrName>Base Attack:</FeedDetailsAttrName> {selected.creator} - {selected.creator}
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Attack Range:</FeedDetailsAttrName> {selected.attack_range || '-'}
+                                            <FeedDetailsAttrName>Attack Range:</FeedDetailsAttrName> {selected.creator || '-'}
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Attack Speed:</FeedDetailsAttrName> {selected.attack_speed || '-'}
+                                            <FeedDetailsAttrName>Attack Speed:</FeedDetailsAttrName> {selected.creator || '-'}
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Projectile Speed:</FeedDetailsAttrName> {selected.projectile_speed || '-'}
+                                            <FeedDetailsAttrName>Projectile Speed:</FeedDetailsAttrName> {selected.creator || '-'}
                                         </FeedDetailsRow>
                                     </FeedDetailsColumn>
                                     <FeedDetailsColumn>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Health:</FeedDetailsAttrName> {selected.base_health || 0}
+                                            <FeedDetailsAttrName>Health:</FeedDetailsAttrName> {selected.creator || 0}
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Health Regen:</FeedDetailsAttrName> {selected.base_health_regen || 0}
+                                            <FeedDetailsAttrName>Health Regen:</FeedDetailsAttrName> {selected.creator || 0}
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Mana:</FeedDetailsAttrName> {selected.base_mana || 0}
+                                            <FeedDetailsAttrName>Mana:</FeedDetailsAttrName> {selected.creator || 0}
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Mana Regen:</FeedDetailsAttrName> {selected.base_mana_regen || 0}
+                                            <FeedDetailsAttrName>Mana Regen:</FeedDetailsAttrName> {selected.creator || 0}
                                         </FeedDetailsRow>
                                     </FeedDetailsColumn>
                                     <FeedDetailsColumn>
@@ -144,21 +144,21 @@ class ShowFeedesPage extends React.Component<AllProps, State> {
                                             <FeedDetailsAttrName>Base Armor:</FeedDetailsAttrName> -
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Magic Resistance:</FeedDetailsAttrName> {selected.base_mr || 0}%
+                                            <FeedDetailsAttrName>Magic Resistance:</FeedDetailsAttrName> {selected.creator || 0}%
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Move Speed:</FeedDetailsAttrName> {selected.move_speed || 0}
+                                            <FeedDetailsAttrName>Move Speed:</FeedDetailsAttrName> {selected.creator || 0}
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Turn Speed:</FeedDetailsAttrName> {selected.turn_rate || 0}
+                                            <FeedDetailsAttrName>Turn Speed:</FeedDetailsAttrName> {selected.creator || 0}
                                         </FeedDetailsRow>
                                     </FeedDetailsColumn>
                                     <FeedDetailsColumn>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>Number of Legs:</FeedDetailsAttrName> {selected.legs}
+                                            <FeedDetailsAttrName>Number of Legs:</FeedDetailsAttrName> {selected.creator}
                                         </FeedDetailsRow>
                                         <FeedDetailsRow>
-                                            <FeedDetailsAttrName>CM Enabled:</FeedDetailsAttrName> {selected.cm_enabled ? 'yes' : 'no'}
+                                            <FeedDetailsAttrName>CM Enabled:</FeedDetailsAttrName> {selected.creator ? 'yes' : 'no'}
                                         </FeedDetailsRow>
                                     </FeedDetailsColumn>
                                 </FeedDetails>
@@ -168,6 +168,8 @@ class ShowFeedesPage extends React.Component<AllProps, State> {
                 </Container>
             </Page>
         )
+
+        return <></>
     }
 }
 

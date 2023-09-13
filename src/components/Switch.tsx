@@ -22,7 +22,7 @@ const SwitchLabel = styled.label`
 const SwitchButton = styled.span`
   content: "";
   position: absolute;
-  top: 1.5px;
+  top: .1em;
   left: 0px;
   width: 12px;
   height: 12px;

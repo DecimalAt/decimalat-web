@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 
 import styled from 'styled-components'
 import Page from '../../components/layout/Page'
@@ -11,13 +11,16 @@ import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
 
 import { ApplicationState } from '../../store'
-import { Feed } from '../../store/feed/types'
+import { FeedState, Job, Validation, Feed } from '../../store/feed/types'
 import { fetchRequest } from '../../store/feed/actions'
+import { Heading } from '../../components/Heading'
+import Icon from '../../components/MyIcon'
+import InfoCard from '../../components/InfoCard'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
     loading: boolean
-    data: Feed[]
+    data: Feed
     errors?: string
 }
 
@@ -29,9 +32,10 @@ interface PropsFromDispatch {
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
 type AllProps = PropsFromState & PropsFromDispatch
 
-const API_ENDPOINT = /*process.env.REACT_APP_API_ENDPOINT ||*/ 'https://api.opendota.com' // TODO: change the API end point
+//const API_ENDPOINT = /*process.env.REACT_APP_API_ENDPOINT ||*/ 'https://api.opendota.com' // TODO: change the API end point
 
 class FeedIndexPage extends React.Component<AllProps> {
+
     public componentDidMount() {
         const { fetchRequest: fr } = this.props
         fr()
@@ -42,23 +46,25 @@ class FeedIndexPage extends React.Component<AllProps> {
 
         return (
             <DataTable columns={['Job / Client ID', 'Value*', 'Time Taken (ms)*']} widths={['auto', '', '']}>
-                {loading && data.length === 0 && (
+                {loading && !data && (
                     <FeedLoading>
                         <td colSpan={3}>Loading...</td>
                     </FeedLoading>
                 )}
-                {data && data.length > 0 && data.map(feed => (
-                    <tr key={feed.id}>
+                {data && data.jobs && data.jobs.map((job: Job) => (
+                    <tr key={job.id}>
                         <FeedDetail>
-                            <FeedIcon src={API_ENDPOINT + feed.icon} alt={feed.name} />
+                            {/* <FeedIcon src={API_ENDPOINT + feed.icon} alt={feed.name} /> */}
                             <FeedName>
-                                <Link to={`/feed/${feed.name}`}>{feed.localized_name}</Link>
+                                <Link to={`/feed/${job.creator}`}>{job.creator}</Link>
                             </FeedName>
                         </FeedDetail>
                         <td>
-                            {feed.pro_pick || 0} / {feed.pro_ban || 0}
+                            {job.paymentPerExecution}
                         </td>
-                        <td>{feed.pro_win || 0}</td>
+                        <td>
+                            {job.paymentPerExecution}
+                        </td>
                     </tr>
                 ))}
             </DataTable>
@@ -79,9 +85,12 @@ class FeedIndexPage extends React.Component<AllProps> {
                                 </LoadingOverlayInner>
                             </LoadingOverlay>
                         )}
-                        <p>
-                            <small>Latest Feeds</small>
-                        </p>
+                        <Heading level={1} styleType='primary'><Icon color="" icon="Feed" size="50px" /> All Feeds</Heading>
+                        <InfoCard
+                            title="300"
+                            description="Reward Points"
+                            icon={<Icon color="#FFF" icon="CopyConfiguration" size="60px" />}
+                        />
                         {this.renderData()}
                     </TableWrapper>
                 </Container>
@@ -89,6 +98,24 @@ class FeedIndexPage extends React.Component<AllProps> {
         )
     }
 }
+
+// const FeedIndexPage1: React.FC<AllProps> = () => {
+//     const dispatch = useDispatch();
+//     debugger
+//     const data = useSelector((state: any) => state);
+  
+//     React.useEffect(() => {
+//       dispatch(fetchRequest());
+//     }, [dispatch]);
+    
+  
+//     return (
+//       <div className="App">
+//         {/* Display your jobs and validations here */}
+//       </div>
+//     );
+//   };
+  
 
 // It's usually good practice to only include one context at a time in a connected component.
 // Although if necessary, you can always include multiple contexts. Just make sure to
@@ -115,7 +142,7 @@ export default connect(
 const TableWrapper = styled('div')`
   position: relative;
   max-width: ${props => props.theme.widths.md};
-  margin: 0 auto;
+  margin: 0 50px;
   min-height: 200px;
 `
 

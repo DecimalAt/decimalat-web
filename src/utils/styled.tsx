@@ -49,6 +49,7 @@ import 'styled-components'
             md: string
             lg: string
             xl: string
+            sidepanel: string
         }
         heights: {
             header: string

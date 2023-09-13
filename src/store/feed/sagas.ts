@@ -1,35 +1,109 @@
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
-import { Feed, FeedActionTypes } from './types'
-import { fetchError, fetchSuccess } from './actions'
-import { callApi } from '../../utils/api'
+// import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
+// import { Feed, FeedActionTypes } from './types'
+// import { fetchError, fetchSuccess } from './actions'
+// // import { callApi } from '../../utils/api'
+// import { client } from '../../graphql/apollo';
+// import { gql } from '@apollo/client';
 
-const API_ENDPOINT = /*process.env.REACT_APP_API_ENDPOINT ||*/ 'https://api.opendota.com' // TODO: Need to change the API end point as per the contract
+// //const API_ENDPOINT = /*process.env.REACT_APP_API_ENDPOINT ||*/ 'https://api.opendota.com' // TODO: Need to change the API end point as per the contract
 
-function* handleFetch() {
-    try {
-        const res: Feed[] = yield call(callApi, 'get', API_ENDPOINT, '/heroStats') // TODO: Need to change the API end point as per the contract
+// const GET_FEED_DATA = gql`
+//   {
+//     jobs(first: 5) {
+//       id
+//       creator
+//       params {
+//         id
+//       }
+//       paymentPerExecution
+//     }
+//     validations(first: 5) {
+//       id
+//       job {
+//         id
+//       }
+//       index
+//       params {
+//         id
+//       }
+//     }
+//   }
+// `;
 
-        if (!res) {
-            yield put(fetchError('Unable to fetch'))
-        } else {
-            yield put(fetchSuccess(res))
-        }
-    } catch (err) {
-        debugger
-        if (err instanceof Error && err.stack) {
-            yield put(fetchError(err.stack))
-        } else {
-            yield put(fetchError('An unknown error occured.'))
-        }
-    }
+
+// function* handleFetch() {
+//   try {
+//     const { data } = yield call([client, client.query], { query: GET_FEED_DATA });
+//     //const res: Feed[] = yield call([client, client.query], { query: GET_FEED_DATA });
+//     yield put(fetchSuccess(data));
+//   } catch (error) {
+//     yield put(fetchError('Unable to fetch : ' + error));
+//   }
+// }
+
+// // function* __handleFetch() {
+// //     try {
+// //         const res: Feed[] = yield call(callApi, 'get', API_ENDPOINT, '/heroStats') // TODO: Need to change the API end point as per the contract
+
+// //         if (!res) {
+// //             yield put(fetchError('Unable to fetch'))
+// //         } else {
+// //             yield put(fetchSuccess(res))
+// //         }
+// //     } catch (err) {
+// //         debugger
+// //         if (err instanceof Error && err.stack) {
+// //             yield put(fetchError(err.stack))
+// //         } else {
+// //             yield put(fetchError('An unknown error occured.'))
+// //         }
+// //     }
+// // }
+
+// function* watchFetchRequest() {
+//   yield takeEvery(FeedActionTypes.FETCH_REQUEST, handleFetch)
+// }
+
+// function* feedSaga() {
+//   yield all([fork(watchFetchRequest)])
+// }
+
+
+
+// export default feedSaga
+
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
+import { FETCH_DATA_REQUEST, fetchSuccess, fetchError } from './actions';
+import { client } from '../../graphql/apollo';
+import JOB_VALIDATION_QUERY from '../../graphql/queries';
+
+function* fetchData() {
+  try {
+    //const { data } = yield call([client, client.query], { query: GET_FEED_DATA });
+    // const result = yield call([client, client.query], {
+    const result = yield call(client.query, {
+      query: JOB_VALIDATION_QUERY,
+      fetchPolicy: "network-only"
+    });
+    debugger
+    yield put(fetchSuccess(result.data));
+  } catch (error: any) {
+    yield put(fetchError(error.toString()));
+  }
 }
 
+// function* feedSaga() {
+//   yield takeLatest(FETCH_DATA_REQUEST, fetchData);
+// }
+
+// export default feedSaga;
+
 function* watchFetchRequest() {
-    yield takeEvery(FeedActionTypes.FETCH_REQUEST, handleFetch)
+  yield takeLatest(FETCH_DATA_REQUEST, fetchData);
 }
 
 function* feedSaga() {
-    yield all([fork(watchFetchRequest)])
+  yield all([fork(watchFetchRequest)])
 }
 
-export default feedSaga
+export default feedSaga;

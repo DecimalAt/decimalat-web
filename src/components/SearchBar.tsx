@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Poppins_300 } from "../styles/fonts/Poppins";
 import Icon from "./MyIcon";
 
-export const FilterTextbox = () => {
+export const FilterTextbox = ({ placeholder, value, onChange } : any) => {
     const [text, setText] = useState("");
     const handleChange = (event: any) => {
         setText(event.target.value);
@@ -16,9 +16,9 @@ export const FilterTextbox = () => {
             <StyledInput className={"inputWithIcon"}>
                 <Input
                     type="text"
-                    value={text}
+                    value={value || text}
                     onChange={handleChange}
-                    placeholder="Search"
+                    placeholder={ placeholder || "Search"}
                     onSubmit={e => {
                         e.preventDefault();
                     }}
@@ -41,7 +41,7 @@ export const FilterTextbox = () => {
 };
 
 const Input = styled.input`
-  width: 100%;
+  width: -webkit-fill-available;
   border: 0.5px solid ${props => props.theme.colors.borderColor1};
   border-radius: 1em;
   margin: 8px 1.5rem;
@@ -62,8 +62,8 @@ const StyledInput = styled.div`
   position: relative;
   & > svg {
     position: absolute;
-    right: -1em;
-    top: 15px;
+    right: 2em;
+    top: 0.9em;
     fill: ${props => props.theme.colors.textColor};
     transition: 0.3s;
   }
@@ -88,8 +88,8 @@ const StyledInput = styled.div`
   }
   button {
     position: absolute;
-    right: -1.6em;
-    top: 13px;
+    right: 1.5em;
+    top: 0.8em;
     background-color: transparent;
     border: none;
     cursor: pointer;

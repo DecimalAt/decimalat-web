@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import brandLogo from '../../../public/decimal_Logo.svg'
 import LayoutContainer from '../../containers/LayoutContainer'
@@ -20,6 +20,9 @@ const Wrapper = styled('header')`
   font-family: ${props => props.theme.fonts.headings};
   height: ${props => props.theme.heights.header};
   display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
 `
 
 const HeaderInner = styled(Container)`
@@ -116,62 +119,68 @@ const HeaderOptions = styled('div')`
   }
 `
 
-const Header: React.FC<HeaderProps> = ({  }) => (
-  <Wrapper>
-    <HeaderInner>
-      <HeaderLeft>
-        <Title>
-          <img src={brandLogo} alt="DecimalAt" height={'30px'} />
-        </Title>
-        <FilterTextbox />
-      </HeaderLeft>
-      <WrapperInner>
-        <HeaderNav>
-          <HeaderNavLink exact to="/feeds" activeClassName="is-active">
-            ALL JOBS
-          </HeaderNavLink>
-          <HeaderNavLink exact to="/" activeClassName="is-active">
-            ALL FEEDS
-          </HeaderNavLink>
-        </HeaderNav>
-      </WrapperInner>
-      <VerticalLine />
-      <WrapperInner className='subHeaderMenu'>
-        <HeaderNav>
-          <HeaderNavLink exact to="/jobs/my" activeClassName="is-active">
-            MY JOBS
-          </HeaderNavLink>
-          <HeaderNavLink to="/feeds/my" activeClassName="is-active">
-            MY FEEDS
-          </HeaderNavLink>
-          <HeaderNavLink to="/dashboard" activeClassName="is-active">
-            MY REWARDS
-          </HeaderNavLink>
-        </HeaderNav>
-      </WrapperInner>
-      <HeaderRight>
-        <HeaderOptions>
-          <Button>
-            + New Job
-          </Button>
-          <Icon icon='Settings' size='22px' />
-          <Icon icon='Notification' size='22px' />
-          <Icon icon='User' size='22px' />
-        </HeaderOptions>
-        <LayoutContainer>
-          {({ theme, setTheme }) => (
-            <>
-              <Switch
-                id="my-switch"
-                toggled={theme !== 'light'}
-                onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-              />
-            </>
-          )}
-        </LayoutContainer>
-      </HeaderRight>
-    </HeaderInner>
-  </Wrapper>
-)
+const Header: React.FC<HeaderProps> = ({ }) => {
+  const history = useHistory();
 
+  const handleNewJobButtonClick = () => {
+    history.push('/jobs/new');
+  };
+  return (
+    <Wrapper>
+      <HeaderInner>
+        <HeaderLeft>
+          <Title>
+            <img src={brandLogo} alt="DecimalAt" height={'30px'} />
+          </Title>
+          <FilterTextbox />
+        </HeaderLeft>
+        <WrapperInner>
+          <HeaderNav>
+            <HeaderNavLink exact to="/feeds" activeClassName="is-active">
+              ALL JOBS
+            </HeaderNavLink>
+            <HeaderNavLink exact to="/" activeClassName="is-active">
+              ALL FEEDS
+            </HeaderNavLink>
+          </HeaderNav>
+        </WrapperInner>
+        <VerticalLine />
+        <WrapperInner className='subHeaderMenu'>
+          <HeaderNav>
+            <HeaderNavLink exact to="/jobs/my" activeClassName="is-active">
+              MY JOBS
+            </HeaderNavLink>
+            <HeaderNavLink to="/feeds/my" activeClassName="is-active">
+              MY FEEDS
+            </HeaderNavLink>
+            <HeaderNavLink to="/dashboard" activeClassName="is-active">
+              MY REWARDS
+            </HeaderNavLink>
+          </HeaderNav>
+        </WrapperInner>
+        <HeaderRight>
+          <HeaderOptions>
+            <Button onClick={handleNewJobButtonClick}>
+              + New Job
+            </Button>
+            <Icon icon='Settings' size='22px' />
+            <Icon icon='Notification' size='22px' />
+            <Icon icon='User' size='22px' />
+          </HeaderOptions>
+          <LayoutContainer>
+            {({ theme, setTheme }) => (
+              <>
+                <Switch
+                  id="my-switch"
+                  toggled={theme !== 'light'}
+                  onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                />
+              </>
+            )}
+          </LayoutContainer>
+        </HeaderRight>
+      </HeaderInner>
+    </Wrapper>
+  )
+}
 export default Header

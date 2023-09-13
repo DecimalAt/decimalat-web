@@ -3,14 +3,14 @@ import brandColors from '../colors/brandColors'
 
 const darkTheme: Theme = {
   colors: {
-    background: brandColors.gray75,
-    body: brandColors.gray10,
-    headings: brandColors.gray5,
-    white: brandColors.white,
+    background: brandColors.borderColor,
+    body: brandColors.borderColor,
+    headings: brandColors.borderColor,
+    white: brandColors.black,
     borders: brandColors.borderColor,
     tableOdd: brandColors.borderColor,
-    brand: brandColors.red,
-    
+    brand: brandColors.selectionColor,
+
     textColor: brandColors.textGray,
     contentBackground: brandColors.backgroundFillWhite,
     bodyBackground: brandColors.grayScale4,
@@ -28,11 +28,11 @@ const darkTheme: Theme = {
   fonts: {
     headings:
       // eslint-disable-next-line max-len
-      "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif",
+      "'Poppins_400'",
     body:
       // eslint-disable-next-line max-len
-      '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif',
-    monospace: "'IBM Plex Mono', Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace, monospace"
+      "'Poppins_300'",
+    monospace: "'Poppins_300'"
   },
   fontSizes: {
     h1: '2.441rem',
@@ -52,7 +52,8 @@ const darkTheme: Theme = {
   widths: {
     md: '720px',
     lg: '960px',
-    xl: '1140px'
+    xl: '1140px',
+    sidepanel: '300px'
   },
   heights: {
     header: '56px'

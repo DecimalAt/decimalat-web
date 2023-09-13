@@ -29,7 +29,9 @@ export default defineConfig(
         //   })
         // ]
 
-
+        define: {
+          'process.env': {}
+        },
         build: {
           sourcemap: true,
           minify: false,
@@ -56,6 +58,9 @@ export default defineConfig(
       // command === 'build'
       return {
         // build specific config
+        define: {
+          'process.env': {}
+        },
       }
     }
   }

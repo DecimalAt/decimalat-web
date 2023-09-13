@@ -52,7 +52,8 @@ const lightTheme: Theme = {
   widths: {
     md: '720px',
     lg: '960px',
-    xl: '1140px'
+    xl: '1140px',
+    sidepanel: '300px'
   },
   heights: {
     header: '56px'
