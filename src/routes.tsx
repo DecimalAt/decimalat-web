@@ -11,7 +11,7 @@ import normalize from './styles/normalize'
 import globals from './styles/globals'
 import FontStyles from './styles/fonts'
 import SidePanel from './components/layout/SidePanel'
-import NewJob from './pages/jobs/new'
+// import NewJob from './pages/jobs/new'
 
 
 // Global styles

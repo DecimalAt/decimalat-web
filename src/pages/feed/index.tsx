@@ -58,9 +58,9 @@ class FeedIndexPage extends React.Component<AllProps> {
         
     }
 
-    componentDidUpdate(prevProps: Readonly<AllProps>, prevState: Readonly<{}>, snapshot?: any): void {
+    // componentDidUpdate(prevProps: Readonly<AllProps>, prevState: Readonly<{}>, snapshot?: any): void {
 
-    }
+    // }
 
     private renderData() {
         const { loading, data } = this.props
@@ -241,10 +241,10 @@ const FeedDetail = styled('td')`
   align-items: center;
 `
 
-const FeedIcon = styled('img')`
-  width: 32px;
-  height: 32px;
-`
+// const FeedIcon = styled('img')`
+//   width: 32px;
+//   height: 32px;
+// `
 
 const FeedName = styled('div')`
   flex: 1 1 auto;

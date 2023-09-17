@@ -30,7 +30,7 @@ import { Reducer } from 'redux'
 // export { reducer as feedReducer }
 
 import { FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, FETCH_DATA_REQUEST } from './actions';
-import { Validation, Job, FeedState } from './types';
+import { FeedState } from './types';
 
 // interface FeedState {
 //     jobs: Job[];

@@ -17,7 +17,7 @@ import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
 
 import { ApplicationState } from '../../store'
-import { Feed, FeedState } from '../../store/feed/types'
+import { Feed } from '../../store/feed/types'
 import { fetchRequest } from '../../store/feed/actions'
 import styled from 'styled-components'
 import LoadingOverlay from '../../components/data/LoadingOverlay'

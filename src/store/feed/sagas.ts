@@ -82,12 +82,12 @@ function* fetchData() {
     //const { data } = yield call([client, client.query], { query: GET_FEED_DATA });
     // const result = yield call([client, client.query], {
       console.log("=======>",process.env.REACT_APP_API_ENDPOINT);
-    const result = yield call(client.query, {
+    const { data } = yield call(client.query, {
       query: JOB_VALIDATION_QUERY,
       fetchPolicy: "network-only"
     });
     debugger
-    yield put(fetchSuccess(result.data));
+    yield put(fetchSuccess(data));
   } catch (error: any) {
     yield put(fetchError(error.toString()));
   }
