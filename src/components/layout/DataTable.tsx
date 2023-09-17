@@ -35,11 +35,19 @@ const Wrapper = styled('table')`
         padding: 1rem;
         text-align: left;
         border-bottom: 2px solid ${props => props.theme.colors.borders};
+        background: #F7F9FC;
+        height: 40px;
+        color: #2A3546;
+        font-family: 'Poppins_600';
+        font-size: 12px;
       }
     }
   }
 
   tbody {
+    background-color: #FFF;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
     tr {
       border-top: 1px solid ${props => props.theme.colors.borders};
 

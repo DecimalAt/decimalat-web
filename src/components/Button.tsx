@@ -7,8 +7,8 @@ const COLOR = {
         // background: linear-gradient(#3f3cfe, #e943d5);
     `,
     secondary: css`
-        color: #000;
-        background: linear-gradient(#c7c7d2, #bcbaba);
+        color: #FFF;
+        background: #037DFF;
     `,
 };
 
@@ -29,6 +29,9 @@ export const Container = styled.button<ButtonProps>`
 
     ${(props) => props.color && COLOR[props.color]}
     ${(props) => props.disabled && DISABLED}
+    ${(props) => props.additionalStyles && css`
+      ${props.additionalStyles}
+    `}
 `;
 
 
@@ -37,6 +40,7 @@ export type ButtonProps = {
     children?: React.ReactNode; // make the component able to receive children elements
     color?: "primary" | "secondary"; // two styling options
     disabled?: boolean; // make the button disabled or not
+    additionalStyles?: string;
 };
 
 export const Button = ({

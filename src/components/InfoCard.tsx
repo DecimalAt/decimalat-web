@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StyledLabel } from './Label';
 
 interface InfoCardProps {
   title: string;
@@ -11,12 +12,13 @@ const CardContainer = styled.div`
   display: flex;
   align-items: center;
   border: 1px solid #e1e1e1;
-  padding: 10px;
+  padding: 18px;
   border-radius: 12px;
-  background: blue;
-  height: 180px;
-  width: 320px;
-  color: #FFF
+  background: #4870e1;
+  height: 112px;
+  width: 224px;
+  color: #FFF;
+  margin-right: 1em;
 `;
 
 const IconContainer = styled.div`
@@ -42,7 +44,11 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, description, icon }) => {
     <CardContainer>
       <TextContainer>
         <Title>{title}</Title>
-        <Description>{description}</Description>
+        <Description>
+          <StyledLabel additionalStyles={`color: #FFF;font-size: 14px; font-family: 'POPPINS_300';`}>
+            {description}
+          </StyledLabel>
+        </Description>
       </TextContainer>
       <IconContainer>
         {icon}

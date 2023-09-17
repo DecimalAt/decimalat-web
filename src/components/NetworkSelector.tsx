@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FilterTextbox } from './SearchBar';
+import Icon from './MyIcon';
+import { StyledLabel } from './Label';
+import { Wrapper } from './Wrapper';
 
 interface Network {
     id: string;
@@ -28,9 +31,11 @@ const NetworkList = styled.ul`
 const NetworkItem = styled.li<{ selected: boolean }>`
   padding: 8px 15px;
   cursor: pointer;
-  background-color: ${props => (props.selected ? '#f0f0f0' : 'transparent')};
+//   background-color: ${props => (props.selected ? '#e2e2e2' : 'transparent')};
+//   font-family: ${props => (props.selected ? 'Poppins_500' : 'inherit')};
   &:hover {
     background-color: #e2e2e2;
+    font-family: 'Poppins_500';
   }
 `;
 
@@ -54,13 +59,12 @@ const NetworkSelector: React.FC<NetworkSelectorProps> = ({ networks, onSelect })
 
     return (
         <div>
-            <SearchInput
-                placeholder="Search for a network..."
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-            />
-            <FilterTextbox placeholder="Search for a network..."
-                value={searchTerm} />
+            <Wrapper additionalStyles={`padding: 0em 2em;padding-top:0;max-width:80%`}>
+                <FilterTextbox placeholder="search"
+                    value={searchTerm}
+                    onChange={(e: any) => setSearchTerm(e.target.value)}
+                />
+            </Wrapper>
             <NetworkList>
                 {filteredNetworks.map(network => (
                     <NetworkItem
@@ -68,7 +72,12 @@ const NetworkSelector: React.FC<NetworkSelectorProps> = ({ networks, onSelect })
                         selected={selectedNetwork?.id === network.id}
                         onClick={() => handleNetworkClick(network)}
                     >
-                        {network.name}
+                        <Wrapper additionalStyles={`padding: 0em 1em;`}>
+                            <Icon icon='Settings' size='22px' color='#2A3546' />
+                            <StyledLabel additionalStyles={`color: #2A3546; font-size: 14px; margin-left: 1.5em;`}>
+                                {network.name}
+                            </StyledLabel>
+                        </Wrapper>
                     </NetworkItem>
                 ))}
             </NetworkList>

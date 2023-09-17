@@ -8,12 +8,13 @@ import { FilterTextbox } from '../SearchBar'
 import Switch from '../Switch'
 import Icon from '../MyIcon'
 import { Button } from '../Button'
+import { Wrapper } from '../Wrapper'
 
 interface HeaderProps {
   title: string
 }
 
-const Wrapper = styled('header')`
+const WrapperHeader = styled('header')`
   padding: 0.5rem 1.5rem;
   background-color: ${props => props.theme.colors.contentBackground};
   color: ${props => props.theme.colors.textColor};
@@ -126,13 +127,15 @@ const Header: React.FC<HeaderProps> = ({ }) => {
     history.push('/jobs/new');
   };
   return (
-    <Wrapper>
+    <WrapperHeader>
       <HeaderInner>
         <HeaderLeft>
           <Title>
             <img src={brandLogo} alt="DecimalAt" height={'30px'} />
           </Title>
-          <FilterTextbox />
+          <Wrapper additionalStyles={`margin-left: 2em`}>
+            <FilterTextbox />
+          </Wrapper>
         </HeaderLeft>
         <WrapperInner>
           <HeaderNav>
@@ -180,7 +183,7 @@ const Header: React.FC<HeaderProps> = ({ }) => {
           </LayoutContainer>
         </HeaderRight>
       </HeaderInner>
-    </Wrapper>
+    </WrapperHeader>
   )
 }
 export default Header

@@ -24,16 +24,16 @@ const StyledH1 = styled.h1<HeadingProps>`
 const StyledH2 = styled.h2<HeadingProps>`
   ${(props) => props.styleType && styles[props.styleType]}
 `;
-const StyledH3 = styled.h2<HeadingProps>`
+const StyledH3 = styled.h3<HeadingProps>`
   ${(props) => props.styleType && styles[props.styleType]}
 `;
-const StyledH4 = styled.h2<HeadingProps>`
+const StyledH4 = styled.h4<HeadingProps>`
   ${(props) => props.styleType && styles[props.styleType]}
 `;
-const StyledH5 = styled.h2<HeadingProps>`
+const StyledH5 = styled.h5<HeadingProps>`
   ${(props) => props.styleType && styles[props.styleType]}
 `;
-const StyledH6 = styled.h2<HeadingProps>`
+const StyledH6 = styled.h6<HeadingProps>`
   ${(props) => props.styleType && styles[props.styleType]}
 `;
 
