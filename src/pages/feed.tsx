@@ -6,7 +6,7 @@ import FeedIndexPage from './feed/index'
 import ShowFeedPage from './feed/show'
 
 import { ApplicationState } from '../store'
-import { Feed, FeedState } from '../store/feed/types'
+import { Feed } from '../store/feed/types'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {

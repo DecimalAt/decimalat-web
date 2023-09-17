@@ -16,12 +16,12 @@ interface NetworkSelectorProps {
     onSelect?: (selectedNetwork: Network) => void;
 }
 
-const SearchInput = styled.input`
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-`;
+// const SearchInput = styled.input`
+//   padding: 10px;
+//   width: 100%;
+//   box-sizing: border-box;
+//   margin-bottom: 10px;
+// `;
 
 const NetworkList = styled.ul`
   list-style-type: none;

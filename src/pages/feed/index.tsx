@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { connect, useDispatch, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 
 import styled from 'styled-components'
 import Page from '../../components/layout/Page'
@@ -11,7 +11,7 @@ import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
 
 import { ApplicationState } from '../../store'
-import { FeedState, Job, Validation, Feed } from '../../store/feed/types'
+import { Job, Feed } from '../../store/feed/types'
 import { fetchRequest } from '../../store/feed/actions'
 import { Heading } from '../../components/Heading'
 import Icon from '../../components/MyIcon'

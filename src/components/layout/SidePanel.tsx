@@ -32,13 +32,13 @@ const PanelContainer = styled.div<PanelProps>`
   }
 `;
 
-const CloseButton = styled.button`
-  border: none;
-  background: none;
-  font-size: 1.5em;
-  margin: 10px;
-  cursor: pointer;
-`;
+// const CloseButton = styled.button`
+//   border: none;
+//   background: none;
+//   font-size: 1.5em;
+//   margin: 10px;
+//   cursor: pointer;
+// `;
 
 interface SidePanelProps {
   isOpen?: boolean;
@@ -77,7 +77,7 @@ const Option = styled.div<OptionProps>`
   `}
 `;
 
-const SidePanel: React.FC<SidePanelProps> = ({ isOpen = true, togglePanel }) => {
+const SidePanel: React.FC<SidePanelProps> = ({ isOpen = true, /*togglePanel*/ }) => {
 
 
 
