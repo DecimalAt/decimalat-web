@@ -30,7 +30,7 @@ import { Reducer } from 'redux'
 // export { reducer as feedReducer }
 
 import { FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, FETCH_DATA_REQUEST } from './actions';
-import { FeedState } from './types';
+import { FeedState, Feed } from './types';
 
 // interface FeedState {
 //     jobs: Job[];
@@ -47,7 +47,7 @@ import { FeedState } from './types';
 
 
 export const initialState: FeedState = {
-    data: [],
+    data: {} as Feed,
     errors: undefined,
     loading: false
 };
