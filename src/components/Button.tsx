@@ -29,8 +29,8 @@ export const Container = styled.button<ButtonProps>`
 
     ${(props) => props.color && COLOR[props.color]}
     ${(props) => props.disabled && DISABLED}
-    ${(props) => props.additionalStyles && css`
-      ${props.additionalStyles}
+    ${(props) => props.additionalstyles && css`
+      ${props.additionalstyles}
     `}
 `;
 
@@ -40,7 +40,7 @@ export type ButtonProps = {
     children?: React.ReactNode; // make the component able to receive children elements
     color?: "primary" | "secondary"; // two styling options
     disabled?: boolean; // make the button disabled or not
-    additionalStyles?: string;
+    additionalstyles?: string;
 };
 
 export const Button = ({

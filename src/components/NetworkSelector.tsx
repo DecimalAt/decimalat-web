@@ -59,7 +59,7 @@ const NetworkSelector: React.FC<NetworkSelectorProps> = ({ networks, onSelect })
 
     return (
         <div>
-            <Wrapper additionalStyles={`padding: 0em 2em;padding-top:0;max-width:80%`}>
+            <Wrapper additionalstyles={`padding: 0em 2em;padding-top:0;max-width:80%`}>
                 <FilterTextbox placeholder="search"
                     value={searchTerm}
                     onChange={(e: any) => setSearchTerm(e.target.value)}
@@ -72,9 +72,9 @@ const NetworkSelector: React.FC<NetworkSelectorProps> = ({ networks, onSelect })
                         selected={selectedNetwork?.id === network.id}
                         onClick={() => handleNetworkClick(network)}
                     >
-                        <Wrapper additionalStyles={`padding: 0em 1em;`}>
+                        <Wrapper additionalstyles={`padding: 0em 1em;`}>
                             <Icon icon='Settings' size='22px' color='#2A3546' />
-                            <StyledLabel additionalStyles={`color: #2A3546; font-size: 14px; margin-left: 1.5em;`}>
+                            <StyledLabel additionalstyles={`color: #2A3546; font-size: 14px; margin-left: 1.5em;`}>
                                 {network.name}
                             </StyledLabel>
                         </Wrapper>

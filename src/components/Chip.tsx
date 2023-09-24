@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components';
 
 type ChipProps = {
     color?: string;
-    backgroundColor?: string;
+    backgroundcolor?: string;
     border?: string;
-    borderRadius?: string;
-    additionalStyles?: string;
+    borderradius?: string;
+    additionalstyles?: string;
 };
 
 export const Chip = styled.span<ChipProps>`
@@ -13,9 +13,9 @@ export const Chip = styled.span<ChipProps>`
   padding: 5px 15px;
   font-size: 0.875em;
   color: ${(props) => props.color || 'white'};
-  background-color: ${(props) => props.backgroundColor || '#6200EA'};
+  background-color: ${(props) => props.backgroundcolor || '#6200EA'};
   border: ${(props) => props.border || 'none'};
-  border-radius: ${(props) => props.borderRadius || '16px'};
+  border-radius: ${(props) => props.borderradius || '16px'};
   transition: all 0.3s;
 
   &:hover {
@@ -23,7 +23,7 @@ export const Chip = styled.span<ChipProps>`
   }
   
   /* Additional styles passed as props */
-  ${(props) => props.additionalStyles && css`
-    ${props.additionalStyles}
+  ${(props) => props.additionalstyles && css`
+    ${props.additionalstyles}
   `}
 `;

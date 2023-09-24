@@ -7,63 +7,63 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 // https://vitejs.dev/config/
 export default defineConfig(
 
-  ({ command, mode, ssrBuild }) => {
-    if (command === 'serve') {
-      return {
-        // dev specific config
-        // build: {
-        //   sourcemap: true,
-        //   minify: false,
-        // },
-        // plugins: [
-        //   react({
-        //     plugins: [
-        //       [
-        //         'babel-plugin-styled-components',
-        //         {
-        //           displayName: true,
-        //           fileName: false
-        //         }
-        //       ]
-        //     ]
-        //   })
-        // ]
+  // ({ command, mode, ssrBuild }) => {
+  //   if (command === 'serve') {
+  //     return {
+  //       // dev specific config
+  //       // build: {
+  //       //   sourcemap: true,
+  //       //   minify: false,
+  //       // },
+  //       // plugins: [
+  //       //   react({
+  //       //     plugins: [
+  //       //       [
+  //       //         'babel-plugin-styled-components',
+  //       //         {
+  //       //           displayName: true,
+  //       //           fileName: false
+  //       //         }
+  //       //       ]
+  //       //     ]
+  //       //   })
+  //       // ]
 
-        define: {
-          'process.env': {}
-        },
-        build: {
-          sourcemap: true,
-          minify: false,
-        },
-        plugins: [
-          react({
-            babel: {
-              plugins: [
-                [
-                  'babel-plugin-styled-components',
-                  {
-                    displayName: true,
-                    fileName: false
-                  }
-                ]
-              ]
-            }
-          }),
-          reactRefresh(),
-          macrosPlugin(),
-        ],
-      }
-    } else {
-      // command === 'build'
-      return {
-        // build specific config
-        define: {
-          'process.env': {}
-        },
-      }
-    }
-  }
+  //       define: {
+  //         'process.env': {}
+  //       },
+  //       build: {
+  //         sourcemap: true,
+  //         minify: false,
+  //       },
+  //       plugins: [
+  //         react({
+  //           babel: {
+  //             plugins: [
+  //               [
+  //                 'babel-plugin-styled-components',
+  //                 {
+  //                   displayName: true,
+  //                   fileName: false
+  //                 }
+  //               ]
+  //             ]
+  //           }
+  //         }),
+  //         reactRefresh(),
+  //         macrosPlugin(),
+  //       ],
+  //     }
+  //   } else {
+  //     // command === 'build'
+  //     return {
+  //       // build specific config
+  //       define: {
+  //         'process.env': {}
+  //       },
+  //     }
+  //   }
+  // }
 
   // {
   // build: {
@@ -105,6 +105,9 @@ export default defineConfig(
   //   reactRefresh(),
   //   macrosPlugin(),
   // ],
-  // //base: '/decimalat-web/'
+  // base: '/decimalat-web/'
   // }
+  {
+    base: '/'
+  }
 )

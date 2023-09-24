@@ -45,7 +45,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, description, icon }) => {
       <TextContainer>
         <Title>{title}</Title>
         <Description>
-          <StyledLabel additionalStyles={`color: #FFF;font-size: 14px; font-family: 'POPPINS_300';`}>
+          <StyledLabel additionalstyles={`color: #FFF;font-size: 14px; font-family: 'POPPINS_300';`}>
             {description}
           </StyledLabel>
         </Description>

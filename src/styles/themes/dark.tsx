@@ -41,7 +41,7 @@ const darkTheme: Theme = {
     h4: '1.25rem'
   },
   containerPadding: '1.5rem',
-  borderRadius: '5px',
+  borderradius: '5px',
   breakpoints: {
     xs: '0px',
     sm: '576px',

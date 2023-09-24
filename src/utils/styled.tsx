@@ -37,7 +37,7 @@ import 'styled-components'
             h4: string
         }
         containerPadding: string
-        borderRadius: string
+        borderradius: string
         breakpoints: {
             xs: string
             sm: string

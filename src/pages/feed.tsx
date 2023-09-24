@@ -2,8 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, Route, Switch } from 'react-router-dom'
 
-import FeedIndexPage from './feed/index'
-import ShowFeedPage from './feed/show'
+import FeedIndexPage from './feeds/index'
+import ShowFeedPage from './feeds/show'
 
 import { ApplicationState } from '../store'
 import { Feed } from '../store/feed/types'
@@ -23,6 +23,7 @@ const FeedPage: React.FC<AllProps> = ({ match }) => {
         <Switch>
             <Route exact path={`${match.path}/`} component={FeedIndexPage} />
             <Route path={`${match.path}/:name`} component={ShowFeedPage} />
+            <Route component={() => <div>Not Found</div>} />
         </Switch>
     )
 }

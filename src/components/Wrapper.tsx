@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 type WrapperProps = {
     margin?: string;
     padding?: string;
-    additionalStyles?: string;
+    additionalstyles?: string;
 };
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -11,7 +11,7 @@ export const Wrapper = styled.div<WrapperProps>`
   padding: ${(props) => props.padding || '0'};
   
   /* Additional styles passed as props */
-  ${(props) => props.additionalStyles && css`
-    ${props.additionalStyles}
+  ${(props) => props.additionalstyles && css`
+    ${props.additionalstyles}
   `}
 `;

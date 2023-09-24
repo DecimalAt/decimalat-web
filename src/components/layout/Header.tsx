@@ -133,16 +133,16 @@ const Header: React.FC<HeaderProps> = ({ }) => {
           <Title>
             <img src={brandLogo} alt="DecimalAt" height={'30px'} />
           </Title>
-          <Wrapper additionalStyles={`margin-left: 2em`}>
+          <Wrapper additionalstyles={`margin-left: 2em`}>
             <FilterTextbox />
           </Wrapper>
         </HeaderLeft>
         <WrapperInner>
           <HeaderNav>
-            <HeaderNavLink exact to="/feeds" activeClassName="is-active">
+            <HeaderNavLink exact to="/jobs" activeClassName="is-active">
               ALL JOBS
             </HeaderNavLink>
-            <HeaderNavLink exact to="/" activeClassName="is-active">
+            <HeaderNavLink exact to="/feeds" activeClassName="is-active">
               ALL FEEDS
             </HeaderNavLink>
           </HeaderNav>
