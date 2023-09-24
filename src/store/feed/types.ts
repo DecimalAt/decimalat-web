@@ -72,7 +72,7 @@
 // });
 
 export interface FeedState {
-    readonly data: Feed[]
+    readonly data: Feed
     readonly errors?: string,
     readonly loading: boolean
 };

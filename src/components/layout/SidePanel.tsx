@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import NetworkSelector from '../NetworkSelector';
 import Switch from '../Switch';
 import VerticalStepper from '../Stepper';
-import VerticalStepIndicator from '../VerticalStepIndicator';
+// import VerticalStepIndicator from '../VerticalStepIndicator';
 import { StyledLabel } from '../Label';
 import { Wrapper } from '../Wrapper';
 import { Chip } from '../Chip';
