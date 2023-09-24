@@ -21,7 +21,7 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: NPM Install
-        run: npm install --legacy-peer-deps
+        run: npm install --f --legacy-peer-deps
 
       - name: Build project
         run: npm run build
