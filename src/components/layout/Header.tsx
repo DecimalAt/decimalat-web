@@ -24,6 +24,7 @@ const WrapperHeader = styled('header')`
   position: fixed;
   width: 100%;
   z-index: 10000;
+  border-bottom: 1px solid lightgray;
 `
 
 const HeaderInner = styled(Container)`

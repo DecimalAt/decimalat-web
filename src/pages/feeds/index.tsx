@@ -188,23 +188,6 @@ class FeedIndexPage extends React.Component<AllProps> {
     }
 }
 
-// const FeedIndexPage1: React.FC<AllProps> = () => {
-//     const dispatch = useDispatch();
-//     debugger
-//     const data = useSelector((state: any) => state);
-
-//     React.useEffect(() => {
-//       dispatch(fetchRequest());
-//     }, [dispatch]);
-
-
-//     return (
-//       <div className="App">
-//         {/* Display your jobs and validations here */}
-//       </div>
-//     );
-//   };
-
 
 // It's usually good practice to only include one context at a time in a connected component.
 // Although if necessary, you can always include multiple contexts. Just make sure to

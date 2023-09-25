@@ -37,7 +37,7 @@ const Routes: React.FC = () => (
         <Route exact path="/" component={FeedPage} />
         <Route path="/feeds" component={FeedPage} />
         <Route path="/jobs" component={JobPage} />
-        <Route path="/dashboard" component={FeedPage} />
+        {/* <Route path="/dashboard" component={FeedPage} /> */}
         <Route component={() => <div>Not Found</div>} />
       </Switch>
     </Container>

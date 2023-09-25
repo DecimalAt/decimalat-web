@@ -3,17 +3,6 @@ import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import styled from 'styled-components'
 
-// import {
-//     FeedInfobox,
-//     FeedInfoboxImage,
-//     FeedInfoboxHeading,
-//     FeedInfoboxInner,
-//     FeedInfoboxBlurBackground,
-//     FeedName,
-//     FeedRoles
-// } from '../../components/feed/FeedInfoBox'
-// import { FeedStats, FeedStatsInner, StatAttribute, Bullet } from '../../components/feed/FeedStats'
-// import { FeedDetails, FeedDetailsColumn, FeedDetailsRow, FeedDetailsAttrName } from '../../components/feed/FeedDetails'
 import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
 
@@ -22,12 +11,8 @@ import { Feed } from '../../store/feed/types'
 import { Heading } from '../../components/Heading'
 import { StyledLabel } from '../../components/Label'
 import Icon from '../../components/MyIcon'
-// import { fetchRequest } from '../../store/feed/actions'
-// import LoadingOverlay from '../../components/data/LoadingOverlay'
-// import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
-// import LoadingSpinner from '../../components/data/LoadingSpinner'
-
-// Separate state props + dispatch props to their own interfaces.
+import { Wrapper } from '../../components/Wrapper'
+import StepByStep from '../../components/job/StepByStep'
 interface PropsFromState {
   loading: boolean
   data: Feed
@@ -52,8 +37,11 @@ type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps<RoutePa
 
 // const API_ENDPOINT = /*process.env.REACT_APP_API_ENDPOINT ||*/  'https://api.opendota.com' // TODO: change the API end point
 
-const Wrapper = styled('div')`
-  position: relative;
+const NewJobWrapper = styled('div')`
+position: relative;
+//   max-width: ${props => props.theme.widths.md};
+margin: 0 50px;
+min-height: 200px;
 `
 
 class NewJobPage extends React.Component<AllProps, State> {
@@ -63,33 +51,19 @@ class NewJobPage extends React.Component<AllProps, State> {
     this.state = {}
   }
 
-  public componentDidMount() {
-    const { data, /*fetchFeed*/ } = this.props
-
-    if (!data) {
-      // fetchFeed()
-    }
-  }
-
   public render() {
-    // const { data, loading, match } = this.props
-    // const selected = data.jobs.find(j => j.id === match.params.name)
 
     return (
       <Page>
         <Container>
-          <Wrapper>
-            {/* {loading && (
-                            <LoadingOverlay>
-                                <LoadingOverlayInner>
-                                    <LoadingSpinner />
-                                </LoadingOverlayInner>
-                            </LoadingOverlay>
-                        )} */}
+          <NewJobWrapper>
             <Heading level={2} styletype='primary'>
               <Icon color="#037DFF" icon="NewConfiguration" size="32px" />
               <StyledLabel additionalstyles={`margin-left:0.5em`}>New Job</StyledLabel>
             </Heading>
+          </NewJobWrapper>
+          <Wrapper additionalstyles={`display: flex; flex-direction: row; align-content: center; align-items: center; justify-content: flex-start;`}>
+            <StepByStep />
           </Wrapper>
         </Container>
       </Page>

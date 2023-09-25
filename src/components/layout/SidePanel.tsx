@@ -10,6 +10,7 @@ import { StyledLabel } from '../Label';
 import { Wrapper } from '../Wrapper';
 import { Chip } from '../Chip';
 import Icon from '../MyIcon';
+import { jobCreationSteps } from '../../utils/constants';
 
 
 interface PanelProps {
@@ -22,7 +23,7 @@ const PanelContainer = styled.div<PanelProps>`
   left: 0;
   width: 300px;
   height: 100%;
-  background-color: #f4f4f4;
+  background-color: #fff;
   transform: translateX(${props => (props.isopen ? '0' : '100%')});
   transition: transform 0.3s ease-in-out;
   box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
@@ -159,28 +160,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isopen = true, /*togglePanel*/ })
     <PanelContainer isopen={isopen}>
       {/* <CloseButton onClick={togglePanel}>&times;</CloseButton> */}
       <div>
-        <VerticalStepper
-          steps={[
-            {
-              title: 'Network',
-              content: (
-                <div>
-                  <p>Load a new configuration <br /> or built a new</p>
-                </div>
-              ),
-              isCompleted: false,
-              isactive: true
-            },
-            {
-              title: 'Operations',
-              content: <p>Load a new configuration <br /> or built a new</p>,
-            },
-            {
-              title: 'Deploy',
-              content: <p>Load a new configuration <br /> or built a new</p>,
-            },
-          ]}
-        />
+        <VerticalStepper steps={jobCreationSteps} />
       </div>
     </PanelContainer>
   )

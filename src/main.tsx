@@ -9,6 +9,7 @@ import Routes from './routes'
 import { ApplicationState } from './store'
 import LayoutContainer from './containers/LayoutContainer'
 import * as themes from './styles/themes'
+import { BroadcastDataProvider } from './contexts/BroadcastContext'
 //import FontStyles from './styles/fonts'
 
 // Any additional component props go here.
@@ -25,7 +26,9 @@ const Main: React.FC<MainProps> = ({ store, history }) => {
         <LayoutContainer>
           {({ theme }) => (
             <ThemeProvider theme={themes[theme]}>
-              <Routes />
+              <BroadcastDataProvider>
+                <Routes />
+              </BroadcastDataProvider>
             </ThemeProvider>
           )}
         </LayoutContainer>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaCheck } from 'react-icons/fa'; // Importing the check (tick) icon from FontAwesome
+import { useListenToBroadcast } from '../hooks/useBroadcast';
 
 type StepProps = {
     title?: string;
@@ -53,27 +54,26 @@ export const TickIcon = styled(FaCheck)`
 `;
 
 const VerticalStepper: React.FC<StepperProps> = ({ steps }) => {
+
     const [activeStep, setActiveStep] = useState(0);
 
-    const handleNext = () => {
-        if (activeStep <= steps.length - 1) {
+    useListenToBroadcast((currStep) => {
+        if (activeStep < currStep) {
             steps[activeStep].isCompleted = true;
             steps[activeStep].isactive = false;
+            steps[currStep].isCompleted = true;
+            steps[currStep].isactive = true;
             setActiveStep((prev) => {
                 return prev + 1;
             });
-        }
-    };
-
-    const handleBack = () => {
-        if (activeStep >= 0) {
-            steps[activeStep - 1].isCompleted = false;
-            steps[activeStep - 1].isactive = true;
+        } else if (activeStep > currStep) {
+            steps[activeStep].isCompleted = false;
+            steps[activeStep].isactive = true;
             setActiveStep((prev) => {
                 return prev - 1;
             });
         }
-    };
+    });
 
     return (
         <StepsContainer>
@@ -84,14 +84,6 @@ const VerticalStepper: React.FC<StepperProps> = ({ steps }) => {
                     {index === activeStep && step.content}
                 </Step>
             ))}
-            <div>
-                <button onClick={handleBack} disabled={activeStep === 0}>
-                    Back
-                </button>
-                <button onClick={handleNext} disabled={activeStep === steps.length}>
-                    Next
-                </button>
-            </div>
         </StepsContainer>
     );
 };
