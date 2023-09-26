@@ -4,7 +4,8 @@ import { Button } from '../Button';
 import { jobCreationSteps } from '../../utils/constants';
 import { useStep } from '../../hooks/useStep';
 import { useBroadcast } from '../../hooks/useBroadcast';
-import { Deploy, Network, Operations } from './StepComponents';
+import { Deploy, Network } from './StepComponents';
+import Operations from './Operations';
 import OperationsPanel from './OperationsPanel';
 import DeployPanel from './DeployPanel';
 
@@ -13,9 +14,9 @@ const RightSidePanel = styled.div`
   position: fixed;
   right: 0;
   top: ${props => props.theme.heights.header};
-  width: 250px;
+  width: 350px;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #fff;
   padding: 20px;
   overflow-y: auto;
 `;
@@ -49,9 +50,16 @@ const StepByStep: React.FC = () => {
             }
             <StepsContainer>
                 {currentStep === 0 && <Network />}
-                {currentStep === 1 && <Operations />}
+                {currentStep === 1 && <Operations onCreateJob={(job) => {
+                    
+                }} />}
                 {currentStep === 2 && <Deploy />}
             </StepsContainer>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div>
                 <Button
                     disabled={isPrevDisabled}

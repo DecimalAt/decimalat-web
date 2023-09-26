@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Accordion from '../Accordion';
 import { FilterTextbox } from '../SearchBar';
 import { Wrapper } from '../Wrapper';
+import DraggableBox from '../DraggableBox';
 
 const OperationsPanel: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -17,6 +18,8 @@ const OperationsPanel: React.FC = () => {
             </Wrapper>
             <Accordion title="First Section">
                 <p>Content for the first section.</p>
+                <DraggableBox id="box1" text="Box 1" />
+                <DraggableBox id="box2" text="Box 2" />
             </Accordion>
             <Accordion title="Second Section">
                 <p>Content for the second section.</p>

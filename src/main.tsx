@@ -4,6 +4,8 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Store } from 'redux'
 import { History } from 'history'
 import { ThemeProvider } from 'styled-components'
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import Routes from './routes'
 import { ApplicationState } from './store'
@@ -22,17 +24,19 @@ interface MainProps {
 const Main: React.FC<MainProps> = ({ store, history }) => {
   return (
     <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <LayoutContainer>
-          {({ theme }) => (
-            <ThemeProvider theme={themes[theme]}>
-              <BroadcastDataProvider>
-                <Routes />
-              </BroadcastDataProvider>
-            </ThemeProvider>
-          )}
-        </LayoutContainer>
-      </ConnectedRouter>
+      <DndProvider backend={HTML5Backend}>
+        <ConnectedRouter history={history}>
+          <LayoutContainer>
+            {({ theme }) => (
+              <ThemeProvider theme={themes[theme]}>
+                <BroadcastDataProvider>
+                  <Routes />
+                </BroadcastDataProvider>
+              </ThemeProvider>
+            )}
+          </LayoutContainer>
+        </ConnectedRouter>
+      </DndProvider>
     </Provider>
   )
 }
