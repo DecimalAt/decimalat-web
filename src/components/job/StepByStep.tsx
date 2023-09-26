@@ -51,7 +51,7 @@ const StepByStep: React.FC = () => {
             <StepsContainer>
                 {currentStep === 0 && <Network />}
                 {currentStep === 1 && <Operations onCreateJob={(job) => {
-                    
+                    console.log(job);
                 }} />}
                 {currentStep === 2 && <Deploy />}
             </StepsContainer>
