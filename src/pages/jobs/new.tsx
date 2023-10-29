@@ -41,7 +41,6 @@ const NewJobWrapper = styled('div')`
 position: relative;
 //   max-width: ${props => props.theme.widths.md};
 margin: 0 50px;
-min-height: 200px;
 `
 
 class NewJobPage extends React.Component<AllProps, State> {
@@ -60,9 +59,11 @@ class NewJobPage extends React.Component<AllProps, State> {
             <Heading level={2} styletype='primary'>
               <Icon color="#037DFF" icon="NewConfiguration" size="32px" />
               <StyledLabel additionalstyles={`margin-left:0.5em`}>New Job</StyledLabel>
+              <br />
+              <StyledLabel additionalstyles={`margin-left: 3.1em; color: #AEB0BB; font-size: 14px; font-weight: normal; position: absolute;`}>Complete the steps to create a new job</StyledLabel>
             </Heading>
           </NewJobWrapper>
-          <Wrapper additionalstyles={`display: flex; flex-direction: row; align-content: center; align-items: center; justify-content: flex-start;`}>
+          <Wrapper additionalstyles={`margin: 50px; margin-right: 400px; position: relative;`}>
             <StepByStep />
           </Wrapper>
         </Container>

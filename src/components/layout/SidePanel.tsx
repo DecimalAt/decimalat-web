@@ -2,15 +2,16 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+
 import NetworkSelector from '../NetworkSelector';
 import Switch from '../Switch';
 import VerticalStepper from '../Stepper';
-// import VerticalStepIndicator from '../VerticalStepIndicator';
 import { StyledLabel } from '../Label';
 import { Wrapper } from '../Wrapper';
 import { Chip } from '../Chip';
 import Icon from '../MyIcon';
 import { jobCreationSteps } from '../../utils/constants';
+import { networks } from '../../utils/constants';
 
 
 interface PanelProps {
@@ -85,18 +86,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isopen = true, /*togglePanel*/ })
 
   const location = useLocation();
 
-  const networks = [
-    { id: '1', name: 'BSC' },
-    { id: '2', name: 'Polygon' },
-    { id: '3', name: 'Etherium' },
-    { id: '4', name: 'BSC' },
-    { id: '5', name: 'Polygon' },
-    { id: '6', name: 'Etherium' },
-    { id: '7', name: 'BSC' },
-    { id: '8', name: 'Polygon' },
-    { id: '9', name: 'Etherium' }
-    // ... more networks
-  ];
+  //const networks = networks;
 
   const [network, setNetwork] = useState(networks[1]);
 

@@ -4,11 +4,17 @@ import { ItemTypes } from '../utils/ItemTypes';
 import styled from 'styled-components';
 
 const Container = styled.div<{ isOver: boolean }>`
-  width: 300px;
-  height: 300px;
-  border: 2px dashed gray;
-  background-color: ${(props: { isOver: boolean }) =>
-        props.isOver ? 'lightgreen' : 'white'};
+    height: 90px;
+    width: 350px;
+    border-radius: 5px;
+    border: 2px dashed #B6D4EF;
+    background: #F4F5F9;
+    font-size: 11px;
+    color: #2A3546;
+    line-height: 90px;
+    text-align: center;
+    background-color: ${(props: { isOver: boolean }) =>
+        props.isOver ? '#B6D4EF' : '#F4F5F9'};
 `;
 
 interface DroppableContainerProps {
@@ -28,7 +34,7 @@ const DroppableContainer: React.FC<DroppableContainerProps> = ({ onDrop }) => {
 
     return (
         <Container ref={drop} isOver={isOver}>
-            Drop here
+            Drag and drop to build your job
         </Container>
     );
 };
