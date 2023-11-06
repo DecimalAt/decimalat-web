@@ -7,6 +7,12 @@ import { ThemeProvider } from 'styled-components'
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
+import '@rainbow-me/rainbowkit/styles.css';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { mainnet, polygon, optimism, arbitrum, base, zora } from 'wagmi/chains';
+import { publicProvider } from 'wagmi/providers/public';
+
 import Routes from './routes'
 import { ApplicationState } from './store'
 import LayoutContainer from './containers/LayoutContainer'
@@ -20,24 +26,47 @@ interface MainProps {
   history: History
 }
 
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, base, zora],
+  [publicProvider()]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  chains,
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
+});
+
 // Created an intersection type of the component props and our Redux props.
 const Main: React.FC<MainProps> = ({ store, history }) => {
   return (
-    <Provider store={store}>
-      <DndProvider backend={HTML5Backend}>
-        <ConnectedRouter history={history}>
-          <LayoutContainer>
-            {({ theme }) => (
-              <ThemeProvider theme={themes[theme]}>
-                <BroadcastDataProvider>
-                  <Routes />
-                </BroadcastDataProvider>
-              </ThemeProvider>
-            )}
-          </LayoutContainer>
-        </ConnectedRouter>
-      </DndProvider>
-    </Provider>
+    <React.StrictMode>
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider chains={chains}>
+          <Provider store={store}>
+            <DndProvider backend={HTML5Backend}>
+              <ConnectedRouter history={history}>
+                <LayoutContainer>
+                  {({ theme }) => (
+                    <ThemeProvider theme={themes[theme]}>
+                      <BroadcastDataProvider>
+                        <Routes />
+                      </BroadcastDataProvider>
+                    </ThemeProvider>
+                  )}
+                </LayoutContainer>
+              </ConnectedRouter>
+            </DndProvider>
+          </Provider>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </React.StrictMode>
   )
 }
 

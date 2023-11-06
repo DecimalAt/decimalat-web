@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 import brandLogo from '../../../public/decimal_Logo.svg'
 import LayoutContainer from '../../containers/LayoutContainer'
 import Container from './Container'
@@ -161,6 +163,7 @@ const Header: React.FC<HeaderProps> = ({ }) => {
               MY REWARDS
             </HeaderNavLink>
           </HeaderNav>
+          <ConnectButton showBalance={true} />
         </WrapperInner>
         <HeaderRight>
           <HeaderOptions>
