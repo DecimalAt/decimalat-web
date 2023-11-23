@@ -20,16 +20,24 @@ const Box = styled.div`
 interface DraggableBoxProps {
     id: string;
     text: string;
-    children: React.ReactNode
+    type: string;
+    config?: any;
+    children: React.ReactNode;
+    helpHeaderText: string;
+    onHelpClick: (helpHeaderText: string) => void;
 }
 
-const DraggableBox: React.FC<DraggableBoxProps> = ({ id, text, children }) => {
+const DraggableBox: React.FC<DraggableBoxProps> = ({ id, text, type, config, children, helpHeaderText, onHelpClick }) => {
     const [, ref] = useDrag({
         type: ItemTypes.BOX,
-        item: { id, text },
+        item: { id, text, type, config },
     });
 
-    return <Box ref={ref}>{children}</Box>;
+    const handleOnClick = () => {
+      onHelpClick(helpHeaderText);
+    }
+
+    return <Box ref={ref} onClick={handleOnClick}>{children}</Box>;
 };
 
 export default DraggableBox;

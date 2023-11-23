@@ -18,7 +18,7 @@ const Container = styled.div<{ isOver: boolean }>`
 `;
 
 interface DroppableContainerProps {
-    onDrop: (item: { id: string; text: string }) => void;
+    onDrop: (item: { id: string; text: string, type: string, config: any }) => void;
 }
 
 const DroppableContainer: React.FC<DroppableContainerProps> = ({ onDrop }) => {

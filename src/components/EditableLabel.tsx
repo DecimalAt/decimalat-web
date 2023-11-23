@@ -20,10 +20,11 @@ const PencilIcon = styled.span`
 
 interface EditableLabelProps {
     label: string;
-    onSave: (newLabel: string) => void;
+    uid: string;
+    onSave: (newLabel: string, uid: string) => void;
 }
 
-const EditableLabel: React.FC<EditableLabelProps> = ({ label, onSave }) => {
+const EditableLabel: React.FC<EditableLabelProps> = ({ label, uid, onSave }) => {
     const [isEditing, setEditing] = useState(false);
     const [editedLabel, setEditedLabel] = useState(label);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -44,7 +45,7 @@ const EditableLabel: React.FC<EditableLabelProps> = ({ label, onSave }) => {
 
     const handleInputBlur = () => {
         setEditing(false);
-        onSave(editedLabel);
+        onSave(editedLabel, uid);
     };
 
     return (

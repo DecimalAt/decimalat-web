@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import uuid from 'react-uuid'
 import { StyledLabel } from '../../Label';
 import { Wrapper } from '../../Wrapper';
 import { JobStepSelectionContainer } from '../types';
@@ -7,6 +8,8 @@ import DroppableContainer from '../../DroppableContainer';
 import { Job } from '../Operations';
 import HttpTask, { HttpTaskType } from '../creation/input/web2fetch/HttpTask';
 import { httpTasks } from '../../../utils/constants';
+import { useBroadcast } from '../../../hooks/useBroadcast';
+import EditableLabel from '../../EditableLabel';
 
 const FormContainer = styled.div`
   width: 300px;
@@ -61,15 +64,46 @@ const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) =>
     });
     const [job, setJob] = useState<Job>({ title: '', description: '' });
 
-    const [droppedItems, setDroppedItems] = useState<{
-        [id: string]: string;
-    }>({});
+    // const [droppedItems, setDroppedItems] = useState<[{
+    //     [id: string]: string;
+    // }]>([{}]);
 
-    const handleDrop = (item: { id: string; text: string }) => {
-        setDroppedItems((prevDroppedItems) => ({
-            ...prevDroppedItems,
-            [item.id]: item.text,
-        }));
+    const [droppedItems, setDroppedItems] = useState<{
+        uid?: string;
+        id: string;
+        text: string;
+        type: string;
+        config?: any;
+    }[]>([]);
+    const [taskLabel, setTaskLabel] = useState('');
+
+    const broadcast = useBroadcast();
+
+    const handleDrop = (item: { id: string; text: string, type: string, config: any }) => {
+        let uItem = { ...item, uid: uuid(), config: { label: `Variable ${droppedItems.length + 1}` } };
+        setDroppedItems((prevDroppedItems) => {
+            let di = [
+                ...prevDroppedItems,
+                ...[uItem]
+            ];
+            broadcast(di);
+            return di;
+        });
+
+
+    };
+
+
+
+    const handleLabelSave = (newLabel: string, uid: string) => {
+        console.log('Label saved:', newLabel);
+        setTaskLabel(newLabel);
+        debugger
+        let l = droppedItems.find(di => di.uid === uid)?.config.label;
+        l = newLabel;
+        broadcast(droppedItems);
+        // handleChange(null, 'label', { id: '1000', name: newLabel });
+        // Perform any additional actions on label save
     };
 
     const handleHttpTaskSubmit = (task: HttpTaskType) => {
@@ -125,9 +159,13 @@ const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) =>
                 <div>
                     <ul>
                         {
-                            Object.keys(droppedItems).map((tId: string, index: number) => {
-                                const m = httpTasks.find(h => h.id === tId)?.name || 'm';
-                                return <HttpTask method={m} onSubmit={handleHttpTaskSubmit} index={index + 1} />
+
+                            droppedItems.map((item: any, index: number) => {
+                                const m = httpTasks.find(h => h.id === item.id)?.name || 'm';
+                                return <>
+                                    <EditableLabel label={taskLabel || item.config?.label} onSave={handleLabelSave} uid={item.uid} />
+                                    <HttpTask method={m} onSubmit={handleHttpTaskSubmit} index={index + 1} />
+                                </>
                             })
                         }
                     </ul>

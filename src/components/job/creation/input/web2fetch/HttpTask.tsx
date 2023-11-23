@@ -68,12 +68,10 @@ const HttpTask: React.FC<HttpTaskFormProps> = ({ method = 'GET', onSubmit, index
         url: '',
         value: '',
         decoding: '',
-        label: 'VariableA',
-        // Add default values for other fields
+        label: `Variable ${index}`,
     });
 
     const [isPanelOpen, setPanelOpen] = useState(false);
-    const [taskLabel, setTaskLabel] = useState('');
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | null,
@@ -99,18 +97,10 @@ const HttpTask: React.FC<HttpTaskFormProps> = ({ method = 'GET', onSubmit, index
         setPanelOpen(!isPanelOpen);
     };
 
-    const handleLabelSave = (newLabel: string) => {
-        console.log('Label saved:', newLabel);
-        setTaskLabel(newLabel);
-        handleChange(null, 'label', { id: '1000', name: newLabel });
-        // Perform any additional actions on label save
-    };
-
     return (
         <>
             <FormContainer onClick={handleTogglePanel}>
                 <h2>{index}. HTTP Task - {method}</h2>
-                <EditableLabel label={taskLabel || 'VariableA'} onSave={handleLabelSave} />
             </FormContainer>
             <CollapsiblePanel isOpen={isPanelOpen}>
                 <form onSubmit={handleSubmit}>

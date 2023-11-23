@@ -47,11 +47,125 @@ export const environments = [
 ];
 
 export const httpTasks = [
-    { id: '1', name: 'GET' },
-    { id: '2', name: 'POST' },
-    { id: '3', name: 'PUT' },
-    { id: '4', name: 'DELETE' },
+    { id: '1', name: 'GET', label: 'httpTask-GET' },
+    { id: '2', name: 'POST', label: 'httpTask-POST' },
+    // { id: '3', name: 'PUT', label: 'httpTask-PUT' },
+    // { id: '4', name: 'DELETE', label: 'httpTask-DELETE' },
 ];
+
+export const web3Tasks = [
+    { 
+        id: '1', 
+        name: 'UniswapExchangeRate',
+        label: 'UniswapExRate',
+        config: [
+            {
+                name: 'token_address_in',
+                label: 'Token Address (In)',
+                type: 'text'
+            },
+            {
+                name: 'token_address_out',
+                label: 'Token Address (Out)',
+                type: 'text'
+            },
+            {
+                name: 'token_amount_in',
+                label: 'Token Amount (In)',
+                type: 'text'
+            },
+            {
+                name: 'slippage',
+                label: 'Slippage',
+                type: 'text'
+            },
+            {
+                name: 'provider',
+                label: 'Provider',
+                type: 'text'
+            },
+        ]
+    }
+];
+
+
+export const processingTasks = [
+    {
+        type: 'math',
+        operations: [
+            {
+                id: 1,
+                name: 'add',
+                label: 'Add',
+                type: 'text',
+                symbol: '+',
+                variables: 'multi',
+            },
+            {
+                id: 2,
+                name: 'sub',
+                label: 'Subtract',
+                type: 'text',
+                symbol: '-',
+                variables: 'double',
+            },
+            {
+                id: 3,
+                name: 'multiply',
+                label: 'Multiply',
+                type: 'text',
+                symbol: 'X',
+                variables: 'multi',
+            },
+            {
+                id: 4,
+                name: 'divide',
+                label: 'Divide',
+                type: 'text',
+                symbol: '/',
+                variables: 'double',
+            },
+            {
+                id: 5,
+                name: 'mean',
+                label: 'Mean',
+                type: 'text',
+                symbol: 'x̄',
+                variables: 'multi',
+            },
+        ]
+    },
+    {
+        type: 'logical',
+        operations: [
+            {
+                id: 1,
+                name: 'equal',
+                label: 'Equals',
+                type: 'text',
+                symbol: '==',
+                variables: 'double'
+            },
+            {
+                id: 2,
+                name: 'lessThan',
+                label: 'Less Than',
+                type: 'text',
+                symbol: '<',
+                variables: 'double'
+            },
+            {
+                id: 3,
+                name: 'greaterThan',
+                label: 'Greater Than',
+                type: 'text',
+                symbol: '>',
+                variables: 'double'
+            },
+        ]
+    }
+];
+
 
 export const contentTypes = [
     { id: '1', name: 'application/java-archive' },
