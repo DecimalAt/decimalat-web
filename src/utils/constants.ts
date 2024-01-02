@@ -103,7 +103,7 @@ export const processingTasks = [
             },
             {
                 id: 2,
-                name: 'sub',
+                name: 'subtract',
                 label: 'Subtract',
                 type: 'text',
                 symbol: '-',

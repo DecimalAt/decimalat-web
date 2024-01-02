@@ -5,11 +5,11 @@ import { StyledLabel } from '../../Label';
 import { Wrapper } from '../../Wrapper';
 import { JobStepSelectionContainer } from '../types';
 import DroppableContainer from '../../DroppableContainer';
-import { Job } from '../Operations';
-import HttpTask, { HttpTaskType } from '../creation/input/web2fetch/HttpTask';
-import { httpTasks } from '../../../utils/constants';
+import Web2Fetch, { Web2FetchType } from '../creation/input/web2fetch';
+import Web3Fetch, { Web3FetchType } from '../creation/input/web3fetch';
+import Math, { MathType } from '../creation/processing/math';
+import Logical, { LogicalType } from '../creation/processing/logical';
 import { useBroadcast } from '../../../hooks/useBroadcast';
-import EditableLabel from '../../EditableLabel';
 
 const FormContainer = styled.div`
   width: 300px;
@@ -62,7 +62,7 @@ const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) =>
         name: '',
         description: '',
     });
-    const [job, setJob] = useState<Job>({ title: '', description: '' });
+    // const [job, setJob] = useState<Job>({ title: '', description: '' });
 
     // const [droppedItems, setDroppedItems] = useState<[{
     //     [id: string]: string;
@@ -75,11 +75,11 @@ const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) =>
         type: string;
         config?: any;
     }[]>([]);
-    const [taskLabel, setTaskLabel] = useState('');
 
     const broadcast = useBroadcast();
 
     const handleDrop = (item: { id: string; text: string, type: string, config: any }) => {
+        debugger
         let uItem = { ...item, uid: uuid(), config: { label: `Variable ${droppedItems.length + 1}` } };
         setDroppedItems((prevDroppedItems) => {
             let di = [
@@ -89,24 +89,22 @@ const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) =>
             broadcast(di);
             return di;
         });
-
-
     };
 
 
+    const handleWeb2FetchSubmit = (task: Web2FetchType) => {
+        debugger;
+    }
 
-    const handleLabelSave = (newLabel: string, uid: string) => {
-        console.log('Label saved:', newLabel);
-        setTaskLabel(newLabel);
-        debugger
-        let l = droppedItems.find(di => di.uid === uid)?.config.label;
-        l = newLabel;
-        broadcast(droppedItems);
-        // handleChange(null, 'label', { id: '1000', name: newLabel });
-        // Perform any additional actions on label save
-    };
+    const handleWeb3TaskTaskSubmit = (task: Web3FetchType) => {
+        debugger;
+    }
 
-    const handleHttpTaskSubmit = (task: HttpTaskType) => {
+    const handleMathTaskSubmit = (task: MathType) => {
+        debugger;
+    }
+
+    const handleLogicalTaskSubmit = (task: LogicalType) => {
         debugger;
     }
 
@@ -156,20 +154,33 @@ const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) =>
                 />
                 <label htmlFor="description">Description:</label> */}
 
-                <div>
-                    <ul>
-                        {
+                <ol start={1}>
+                    {
 
-                            droppedItems.map((item: any, index: number) => {
-                                const m = httpTasks.find(h => h.id === item.id)?.name || 'm';
-                                return <>
-                                    <EditableLabel label={taskLabel || item.config?.label} onSave={handleLabelSave} uid={item.uid} />
-                                    <HttpTask method={m} onSubmit={handleHttpTaskSubmit} index={index + 1} />
-                                </>
-                            })
-                        }
-                    </ul>
-                </div>
+                        droppedItems.map((item: any, index: number) => {
+                            return <li>
+                                <Wrapper additionalstyles={``}>
+                                    {
+                                        item.type === 'httptask' &&
+                                        <Web2Fetch item={item} onSubmit={handleWeb2FetchSubmit} index={index + 1} />
+                                    }
+                                    {
+                                        item.type === 'web3Tasks' &&
+                                        <Web3Fetch item={item} onSubmit={handleWeb3TaskTaskSubmit} index={index + 1} />
+                                    }
+                                    {
+                                        item.type === 'MATH' &&
+                                        <Math item={item} onSubmit={handleMathTaskSubmit} index={index + 1} />
+                                    }
+                                    {
+                                        item.type === 'LOGICAL' &&
+                                        <Logical item={item} onSubmit={handleLogicalTaskSubmit} index={index + 1} />
+                                    }
+                                </Wrapper>
+                            </li>
+                        })
+                    }
+                </ol>
 
                 <DroppableContainer onDrop={handleDrop} />
                 {/* <div>
