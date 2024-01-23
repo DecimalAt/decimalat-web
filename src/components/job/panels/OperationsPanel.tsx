@@ -16,7 +16,8 @@ export const CaretDownIcon = styled(BsGridFill)`
 
 const OperationsPanel: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const [variables, setVariables] = useState<[{ uid: string, id: string; text: string, type: string, config: any }]>();
+    // const [variables, setVariables] = useState<[{ uid: string, id: string; text: string, type: string, config: any }]>();
+    const [variables, setVariables] = useState<any[]>();
     const [helpHeaderText, setHelpHeaderText] = useState('')
 
     useListenToBroadcast((droppedVariables) => {

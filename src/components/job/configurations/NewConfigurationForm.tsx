@@ -11,42 +11,42 @@ import Math, { MathType } from '../creation/processing/math';
 import Logical, { LogicalType } from '../creation/processing/logical';
 import { useBroadcast } from '../../../hooks/useBroadcast';
 
-const FormContainer = styled.div`
-  width: 300px;
-  margin: 0 auto;
-`;
+// const FormContainer = styled.div`
+//   width: 300px;
+//   margin: 0 auto;
+// `;
 
-const FormGroup = styled.div`
-  margin-bottom: 20px;
-`;
+// const FormGroup = styled.div`
+//   margin-bottom: 20px;
+// `;
 
-const Label = styled.label`
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-`;
+// const Label = styled.label`
+//   display: block;
+//   font-weight: bold;
+//   margin-bottom: 5px;
+// `;
 
-const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
+// const Input = styled.input`
+//   width: 100%;
+//   padding: 10px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+// `;
 
-const Button = styled.button`
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
+// const Button = styled.button`
+//   background-color: #007bff;
+//   color: white;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+// `;
 
-const InputField = styled.input`
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-`;
+// const InputField = styled.input`
+//   width: 100%;
+//   padding: 10px;
+//   margin-bottom: 10px;
+// `;
 
 interface Configuration {
     name: string;
@@ -57,11 +57,11 @@ interface ConfigurationFormProps {
     onSubmit: (config: Configuration) => void;
 }
 
-const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) => {
-    const [config, setConfig] = useState<Configuration>({
-        name: '',
-        description: '',
-    });
+const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ /*onSubmit*/ }) => {
+    // const [config, setConfig] = useState<Configuration>({
+    //     name: '',
+    //     description: '',
+    // });
     // const [job, setJob] = useState<Job>({ title: '', description: '' });
 
     // const [droppedItems, setDroppedItems] = useState<[{
@@ -92,19 +92,19 @@ const NewConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) =>
     };
 
 
-    const handleWeb2FetchSubmit = (task: Web2FetchType) => {
+    const handleWeb2FetchSubmit = (/*task: Web2FetchType*/) => {
         debugger;
     }
 
-    const handleWeb3TaskTaskSubmit = (task: Web3FetchType) => {
+    const handleWeb3TaskTaskSubmit = (/*task: Web3FetchType*/) => {
         debugger;
     }
 
-    const handleMathTaskSubmit = (task: MathType) => {
+    const handleMathTaskSubmit = (/*task: MathType*/) => {
         debugger;
     }
 
-    const handleLogicalTaskSubmit = (task: LogicalType) => {
+    const handleLogicalTaskSubmit = (/*task: LogicalType*/) => {
         debugger;
     }
 

@@ -6,36 +6,36 @@ import { JobStepSelectionContainer } from '../types';
 import JsonVerificationComponent from './JsonInput';
 
 // Styled-Components for styling
-const FormContainer = styled.div`
-  width: 300px;
-  margin: 0 auto;
-`;
+// const FormContainer = styled.div`
+//   width: 300px;
+//   margin: 0 auto;
+// `;
 
-const FormGroup = styled.div`
-  margin-bottom: 20px;
-`;
+// const FormGroup = styled.div`
+//   margin-bottom: 20px;
+// `;
 
-const Label = styled.label`
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-`;
+// const Label = styled.label`
+//   display: block;
+//   font-weight: bold;
+//   margin-bottom: 5px;
+// `;
 
-const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
+// const Input = styled.input`
+//   width: 100%;
+//   padding: 10px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+// `;
 
-const Button = styled.button`
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
+// const Button = styled.button`
+//   background-color: #007bff;
+//   color: white;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+// `;
 
 interface Configuration {
   name: string;
@@ -52,19 +52,19 @@ const CopyConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) =
     description: '',
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    field: keyof Configuration
-  ) => {
-    const { value } = e.target;
-    setConfig({ ...config, [field]: value });
-  };
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement>,
+  //   field: keyof Configuration
+  // ) => {
+  //   const { value } = e.target;
+  //   setConfig({ ...config, [field]: value });
+  // };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(config);
-    setConfig({ name: '', description: '' });
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   onSubmit(config);
+  //   setConfig({ name: '', description: '' });
+  // };
 
   const handleVerificationSubmit = (jsonData: object) => {
     // Add your verification logic here

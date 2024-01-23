@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { contentTypes } from '../../../../../utils/constants';
-import Dropdown from '../../../../Dropdown';
+// import { contentTypes } from '../../../../../utils/constants';
+// import Dropdown from '../../../../Dropdown';
 import EditableLabel from '../../../../EditableLabel';
-import Input from '../../../../Input';
+// import Input from '../../../../Input';
 import { useBroadcast } from '../../../../../hooks/useBroadcast';
 import HttpTaskGet from './HttpTaskGet';
 import HttpTaskPost from './HttpTaskPost';
@@ -43,15 +43,15 @@ const CollapsiblePanel = styled.div<{ isOpen: boolean }>`
 
 
 
-const FormGroup = styled.div`
-  margin-bottom: 20px;
-`;
+// const FormGroup = styled.div`
+//   margin-bottom: 20px;
+// `;
 
-const Label = styled.label`
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-`;
+// const Label = styled.label`
+//   display: block;
+//   font-weight: bold;
+//   margin-bottom: 5px;
+// `;
 
 // const Input = styled.input`
 //   width: 100%;
@@ -69,14 +69,14 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Web2Fetch: React.FC<Web2FetchFormProps> = ({ onSubmit, index = 0, item }) => {
-    const [task, setTask] = useState<Web2FetchType>({
-        // method: method,
-        // url: '',
-        // value: '',
-        // decoding: '',
-        label: `Variable ${index}`,
-    });
+const Web2Fetch: React.FC<Web2FetchFormProps> = ({ /*onSubmit, index = 0,*/ item }) => {
+    // const [task, setTask] = useState<Web2FetchType>({
+    //     // method: method,
+    //     // url: '',
+    //     // value: '',
+    //     // decoding: '',
+    //     label: `Variable ${index}`,
+    // });
 
     const [isPanelOpen, setPanelOpen] = useState(true);
     const [taskLabel, setTaskLabel] = useState('');
@@ -97,17 +97,17 @@ const Web2Fetch: React.FC<Web2FetchFormProps> = ({ onSubmit, index = 0, item }) 
     //     setTask({ ...task, [field]: value });
     // };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        onSubmit(task);
-        // setTask({ method: 'GET', url: '', value: '', decoding: '' }); // Reset the form fields
-    };
+    // const handleSubmit = (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     onSubmit(task);
+    //     // setTask({ method: 'GET', url: '', value: '', decoding: '' }); // Reset the form fields
+    // };
 
     const handleTogglePanel = () => {
         setPanelOpen(!isPanelOpen);
     };
 
-    const handleLabelSave = (newLabel: string, uid: string) => {
+    const handleLabelSave = (newLabel: string, /*uid: string*/) => {
         console.log('Label saved:', newLabel);
         setTaskLabel(newLabel);
         debugger
@@ -115,7 +115,7 @@ const Web2Fetch: React.FC<Web2FetchFormProps> = ({ onSubmit, index = 0, item }) 
         broadcast(item);
     };
 
-    debugger
+    // debugger
 
     return (
         <>

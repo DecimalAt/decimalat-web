@@ -45,18 +45,18 @@ const DropdownItem = styled.li`
   }
 `;
 
-interface DropdownProps<T> {
+interface DropdownProps {
     options: { id: string; name: string; }[];
     onSelect: (option: { id: string; name: string; }) => void;
     defaultOption?: { id: string; name: string; } | null;
     isOpen?: boolean;
 }
 
-function Dropdown<T>({
+function Dropdown({
     options,
     onSelect,
     defaultOption = null,
-}: DropdownProps<T>): JSX.Element {
+}: DropdownProps): JSX.Element {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<{ id: string; name: string; } | null>(defaultOption);
 
