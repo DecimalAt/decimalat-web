@@ -59,7 +59,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Web3Fetch: React.FC<Web3FetchFormProps> = ({ onSubmit, index = 0, item }) => {
+const Web3Fetch: React.FC<Web3FetchFormProps> = ({ /*onSubmit, index = 0,*/ item }) => {
     // const [task, setTask] = useState<Web3FetchType>({
     //     // method: method,
     //     // url: '',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { StyledLabel } from '../../Label';
 import { Wrapper } from '../../Wrapper';
 import { JobStepSelectionContainer } from '../types';
@@ -45,11 +45,11 @@ interface ConfigurationFormProps {
     onSubmit: (config: Configuration) => void;
 }
 
-const LoadConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) => {
-    const [config, setConfig] = useState<Configuration>({
-        name: '',
-        description: '',
-    });
+const LoadConfigurationForm: React.FC<ConfigurationFormProps> = ({ /*onSubmit*/ }) => {
+    // const [config, setConfig] = useState<Configuration>({
+    //     name: '',
+    //     description: '',
+    // });
 
     // const handleChange = (
     //     e: React.ChangeEvent<HTMLInputElement>,
