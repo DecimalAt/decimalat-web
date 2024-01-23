@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { StyledLabel } from '../../Label';
 import { Wrapper } from '../../Wrapper';
 import { JobStepSelectionContainer } from '../types';
+import JsonVerificationComponent from './JsonInput';
 
 // Styled-Components for styling
 const FormContainer = styled.div`
@@ -37,76 +38,82 @@ const Button = styled.button`
 `;
 
 interface Configuration {
-    name: string;
-    description: string;
+  name: string;
+  description: string;
 }
 
 interface ConfigurationFormProps {
-    onSubmit: (config: Configuration) => void;
+  onSubmit: (config: Configuration) => void;
 }
 
 const CopyConfigurationForm: React.FC<ConfigurationFormProps> = ({ onSubmit }) => {
-    const [config, setConfig] = useState<Configuration>({
-        name: '',
-        description: '',
-    });
+  const [config, setConfig] = useState<Configuration>({
+    name: '',
+    description: '',
+  });
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        field: keyof Configuration
-    ) => {
-        const { value } = e.target;
-        setConfig({ ...config, [field]: value });
-    };
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: keyof Configuration
+  ) => {
+    const { value } = e.target;
+    setConfig({ ...config, [field]: value });
+  };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        onSubmit(config);
-        setConfig({ name: '', description: '' });
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(config);
+    setConfig({ name: '', description: '' });
+  };
 
-    return (
-        <JobStepSelectionContainer>
-            <StyledLabel additionalstyles={`margin: 0; font-weight: bold; font-size: 18px; font-family: 'Poppins_400';`}>Copy Configuration</StyledLabel>
-            <br />
-            <br />
-            <br />
-            <Wrapper additionalstyles={`display: flex; flex-direction: row; align-items: center; width: 180px; justify-content: space-between;`}>
-            </Wrapper>
-            <br />
-            <br />
-            <br />
-        </JobStepSelectionContainer >
-    );
+  const handleVerificationSubmit = (jsonData: object) => {
+    // Add your verification logic here
+    console.log('Verifying JSON:', jsonData);
+  };
 
-    // return (
-    //     <FormContainer>
-    //         <h2>Create a New Configuration</h2>
-    //         <form onSubmit={handleSubmit}>
-    //             <FormGroup>
-    //                 <Label htmlFor="name">Name:</Label>
-    //                 <Input
-    //                     type="text"
-    //                     id="name"
-    //                     name="name"
-    //                     value={config.name}
-    //                     onChange={(e) => handleChange(e, 'name')}
-    //                 />
-    //             </FormGroup>
-    //             <FormGroup>
-    //                 <Label htmlFor="description">Description:</Label>
-    //                 <Input
-    //                     type="text"
-    //                     id="description"
-    //                     name="description"
-    //                     value={config.description}
-    //                     onChange={(e) => handleChange(e, 'description')}
-    //                 />
-    //             </FormGroup>
-    //             <Button type="submit">Create Configuration</Button>
-    //         </form>
-    //     </FormContainer>
-    // );
+  return (
+    <JobStepSelectionContainer>
+      <StyledLabel additionalstyles={`margin: 0; font-weight: bold; font-size: 18px; font-family: 'Poppins_400';`}>JSON</StyledLabel>
+      <br />
+      <br />
+      <br />
+      <Wrapper additionalstyles={`display: flex; flex-direction: row; align-items: center; width: 180px; justify-content: space-between;`}>
+        <JsonVerificationComponent onSubmit={handleVerificationSubmit} />
+      </Wrapper>
+      <br />
+      <br />
+      <br />
+    </JobStepSelectionContainer >
+  );
+
+  // return (
+  //     <FormContainer>
+  //         <h2>Create a New Configuration</h2>
+  //         <form onSubmit={handleSubmit}>
+  //             <FormGroup>
+  //                 <Label htmlFor="name">Name:</Label>
+  //                 <Input
+  //                     type="text"
+  //                     id="name"
+  //                     name="name"
+  //                     value={config.name}
+  //                     onChange={(e) => handleChange(e, 'name')}
+  //                 />
+  //             </FormGroup>
+  //             <FormGroup>
+  //                 <Label htmlFor="description">Description:</Label>
+  //                 <Input
+  //                     type="text"
+  //                     id="description"
+  //                     name="description"
+  //                     value={config.description}
+  //                     onChange={(e) => handleChange(e, 'description')}
+  //                 />
+  //             </FormGroup>
+  //             <Button type="submit">Create Configuration</Button>
+  //         </form>
+  //     </FormContainer>
+  // );
 };
 
 export default CopyConfigurationForm;
