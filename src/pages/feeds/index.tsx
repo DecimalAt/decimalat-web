@@ -64,6 +64,7 @@ class FeedIndexPage extends React.Component<AllProps> {
 
     private renderData() {
         const { loading, data } = this.props
+        
 
         return (
             <>

@@ -38,13 +38,13 @@
 // export type ApiResponse = Record<string, any>
 
 // // using the `@@context/ACTION_TYPE` convention, this follows the convention of Redux's `@@INIT` action.
-// export enum FeedActionTypes {
-//     FETCH_REQUEST = '@@feed/FETCH_REQUEST',
-//     FETCH_SUCCESS = '@@feed/FETCH_SUCCESS',
-//     FETCH_ERROR = '@@feed/FETCH_ERROR',
-//     SELECT_FEED = '@@feed/SELECT_FEED',
-//     SELECTED = '@@feed/SELECTED'
-// }
+export enum FeedActionTypes {
+    FETCH_REQUEST = '@@feed/FETCH_REQUEST',
+    FETCH_SUCCESS = '@@feed/FETCH_SUCCESS',
+    FETCH_ERROR = '@@feed/FETCH_ERROR',
+    SELECT_FEED = '@@feed/SELECT_FEED',
+    SELECTED = '@@feed/SELECTED'
+}
 
 // // Declare state types with `readonly` modifier to get compile time immutability.
 // export interface FeedState {

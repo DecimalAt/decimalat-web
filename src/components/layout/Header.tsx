@@ -136,9 +136,9 @@ const Header: React.FC<HeaderProps> = ({ }) => {
           <Title>
             <img src={brandLogo} alt="DecimalAt" height={'30px'} />
           </Title>
-          <Wrapper additionalstyles={`margin-left: 2em`}>
+          {/* <Wrapper additionalstyles={`margin-left: 2em`}>
             <FilterTextbox />
-          </Wrapper>
+          </Wrapper> */}
         </HeaderLeft>
         <WrapperInner>
           <HeaderNav>
@@ -150,9 +150,9 @@ const Header: React.FC<HeaderProps> = ({ }) => {
             </HeaderNavLink>
           </HeaderNav>
         </WrapperInner>
-        <VerticalLine />
+        {/* <VerticalLine /> */}
         <WrapperInner className='subHeaderMenu'>
-          <HeaderNav>
+          {/* <HeaderNav>
             <HeaderNavLink exact to="/jobs/my" activeClassName="is-active">
               MY JOBS
             </HeaderNavLink>
@@ -162,7 +162,7 @@ const Header: React.FC<HeaderProps> = ({ }) => {
             <HeaderNavLink to="/dashboard" activeClassName="is-active">
               MY REWARDS
             </HeaderNavLink>
-          </HeaderNav>
+          </HeaderNav> */}
           <ConnectButton showBalance={true} />
         </WrapperInner>
         <HeaderRight>

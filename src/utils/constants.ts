@@ -36,8 +36,8 @@ export const networks = [
 ];
 
 export const configButtonOptions = [
-    { id: '1', name: 'New Configuration' },
-    { id: '2', name: 'Copy Configuration' },
+    // { id: '1', name: 'New Configuration' },
+    // { id: '2', name: 'Copy Configuration' },
     { id: '3', name: 'Load Configuration' }
 ];
 
@@ -223,4 +223,15 @@ export const contentTypes = [
     { id: '53', name: 'application/msword' },
     // { id: '54', name: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' },
     { id: '55', name: 'application/vnd.mozilla.xul+xml' },
-]
+];
+
+export const frequencies = [
+    {id: '0', name: 'blocks'},
+    // { id: '1', name: 'seconds' },
+    // { id: '2', name: 'minuntes' },
+    // { id: '3', name: 'hours' },
+    // { id: '4', name: 'days' },
+    // { id: '5', name: 'weeks' },
+    // { id: '6', name: 'months' },
+    // { id: '7', name: 'years' },
+];

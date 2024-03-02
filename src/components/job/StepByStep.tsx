@@ -59,13 +59,13 @@ const StepByStep: React.FC = () => {
     return (
         <>
             <div>
-                {currentStep !== 0 &&
+                {/* {currentStep !== 0 
+                    &&
                     <RightSidePanel>
                         {/* {currentStep === 0 && <OperationsPanel />} */}
-                        {currentStep === 1 && <OperationsPanel />}
-                        {currentStep === 2 && <DeployPanel />}
-                    </RightSidePanel>
-                }
+                        {/* {currentStep === 1 && <OperationsPanel />} */}
+                        {/* {currentStep === 2 && <DeployPanel />} */}
+                    {/* </RightSidePanel> */}
                 <StepsContainer>
                     {currentStep === 0 && <NetworkSelection networks={networks} onCreateJob={(networkConfig) => {
                         setSelectedNetworkConfig(networkConfig);
